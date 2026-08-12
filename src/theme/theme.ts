@@ -27,6 +27,13 @@ export const theme = createTheme({
       "#312E81",
     ],
   },
+  radius: {
+    xs: "4px",
+    sm: "6px",
+    md: "8px",
+    lg: "12px",
+    xl: "32px",
+  },
 
   other: {
     dark: darkColors,

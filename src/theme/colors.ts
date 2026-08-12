@@ -9,8 +9,7 @@ export const colors = {
 
 export const darkColors = {
   background: "#0F1117",
-  surface: "#0F1117",
-  //surface: "#181C25",
+  surface: "#181C25",
   surfaceHover: "#212633",
   border: "#2B3242",
   divider: "#343B4D",
@@ -22,9 +21,8 @@ export const darkColors = {
 } as const;
 
 export const lightColors = {
-  background: "#F6F8FB",
+  background: "#FFFFFF",
   surface: "#F6F8FB",
-  //surface: "#FFFFFF",
   surfaceHover: "#FAFAFB",
   border: "#E6E8EC",
   divider: "#ECEEF2",

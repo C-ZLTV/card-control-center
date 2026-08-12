@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem;
+}
+
+.header__menu {
+  line-height: 0;
+}
+
+.header__title {
+  font-weight: 600;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.header__notification,
+.header__help,
+.header__theme {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header {
+    display: block;
+  }
+
+  .header__menu,
+  .header__title {
+    display: none;
+  }
+
+  .header__notification,
+  .header__help,
+  .header__theme {
+    display: flex;
+  }
+}

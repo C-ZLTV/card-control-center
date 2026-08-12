@@ -12,11 +12,7 @@ import { resolver } from "./theme/resolver.ts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <MantineProvider
-      theme={theme}
-      cssVariablesResolver={resolver}
-      defaultColorScheme="dark"
-    >
+    <MantineProvider theme={theme} cssVariablesResolver={resolver} defaultColorScheme="dark">
       <App />
     </MantineProvider>
   </StrictMode>,

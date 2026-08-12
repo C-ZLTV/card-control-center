@@ -1,0 +1,15 @@
+.operator {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  line-height: 1;
+}
+
+.operator__name {
+  font-weight: 600;
+}
+
+.operator__role {
+  font-size: 0.875rem;
+  color: var(--app-text-secondary);
+}
