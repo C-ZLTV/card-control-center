@@ -1,0 +1,86 @@
+.wip {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 3rem 1.25rem;
+  text-align: center;
+}
+
+.wip__visual {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+
+  background: var(--app-surface);
+  color: var(--app-primary);
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 0 0 8px color-mix(in srgb, var(--app-primary) 6%, transparent);
+}
+
+.wip__icon {
+  line-height: 0;
+}
+
+.wip__content {
+  max-width: 100%;
+}
+
+.wip__label {
+  color: var(--app-primary);
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.wip__content h1 {
+  color: var(--app-heading);
+
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.wip__content p {
+  margin-bottom: 1.25rem;
+
+  color: var(--app-text-secondary);
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.wip__content p br {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .wip {
+    padding: 4rem 1.5rem;
+  }
+
+  .wip__content {
+    max-width: 560px;
+  }
+
+  .wip__content h1 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+  }
+
+  .wip__content p br {
+    display: initial;
+  }
+}

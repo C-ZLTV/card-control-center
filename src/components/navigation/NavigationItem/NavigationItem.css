@@ -1,0 +1,16 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navigation__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  transition: color 0.2s ease-in-out;
+}
+
+.navigation__item:hover {
+  color: var(--app-primary);
+}

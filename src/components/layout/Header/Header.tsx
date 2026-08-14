@@ -1,11 +1,18 @@
-import { Menu, BellDot, CircleQuestionMark } from "lucide-react";
+import { Menu, BellDot } from "lucide-react";
 import { useDisclosure } from "@mantine/hooks";
-import { ThemeToggle } from "../../../theme/ThemeToggle";
-import { Avatar, ActionIcon, Drawer, Group, HoverCard, Text } from "@mantine/core";
+import { ThemeToggle } from "../../theme/ThemeToggle/ThemeToggle";
+import { Avatar, ActionIcon, Drawer, Group, HoverCard } from "@mantine/core";
 import "./Header.css";
-import { NavigationItems } from "../../navigation/NavigationItems/NavigationItems";
+import { MainNavigation } from "../../navigation/MainNavigation/MainNavigation";
+import { useCurrentRoute } from "../../../hooks/useCurrentRoutes";
+import { HelpMenu } from "../../navigation/HelpMenu/HelpMenu";
+import { OperatorMenu } from "../../navigation/OperatorMenu/OperatorMenu";
+
 export function Header() {
   const [opened, { open, close }] = useDisclosure(false);
+
+  const { label } = useCurrentRoute();
+  console.log(label);
 
   return (
     <header className="container header">
@@ -15,7 +22,7 @@ export function Header() {
         </ActionIcon>
       </div>
 
-      <div className="header__title">Dashboard</div>
+      <div className="header__title">{label}</div>
 
       <div className="header__actions">
         <Group justify="center">
@@ -34,35 +41,16 @@ export function Header() {
             </HoverCard.Dropdown>
           </HoverCard>
         </Group>
-        <Group justify="center">
-          <HoverCard width={280} shadow="md">
-            <HoverCard.Target>
-              <ActionIcon className="header__help" variant="subtle" aria-label="Help">
-                <CircleQuestionMark color="var(--app-text)" size={20} strokeWidth={1.5} />
-              </ActionIcon>
-            </HoverCard.Target>
-            <HoverCard.Dropdown>
-              <Text size="sm">
-                TODO: Add help redirects on step 4 Routing + App Shell (Keyboard shortcuts Help &
-                Support Documentation Contact support)
-              </Text>
-            </HoverCard.Dropdown>
-          </HoverCard>
-        </Group>
-        {/*         TODO: Add avatar redirects on step 3 Routing + App Shell
-         */}
+        <HelpMenu />
         <div className="header__avatar">
-          <Avatar color="cyan" radius="xl" size="sm">
-            RF
-          </Avatar>
+          <OperatorMenu onlyIcon iconSize="sm" />
         </div>
         <div className="header__theme">
           <ThemeToggle />
         </div>
       </div>
-
       <Drawer opened={opened} onClose={close}>
-        <NavigationItems />
+        <MainNavigation onNavigate={close} />
       </Drawer>
     </header>
   );

@@ -11,13 +11,7 @@
 
 .header__title {
   font-weight: 600;
-}
-
-.header__actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 1.5rem;
+  color: var(--app-heading);
 }
 
 .header__notification,
@@ -34,6 +28,13 @@
   .header__menu,
   .header__title {
     display: none;
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.5rem;
   }
 
   .header__notification,

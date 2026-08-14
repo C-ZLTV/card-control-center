@@ -1,11 +1,11 @@
 import "./Sidebar.css";
-import { NavigationItems } from "../../navigation/NavigationItems/NavigationItems";
+import { MainNavigation } from "../../navigation/MainNavigation/MainNavigation";
 import { OperatorMenu } from "../../navigation/OperatorMenu/OperatorMenu";
 
 export function Sidebar() {
   return (
     <aside className="sidebar container">
-      <NavigationItems />
+      <MainNavigation />
       <OperatorMenu />
     </aside>
   );

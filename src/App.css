@@ -2,27 +2,3 @@ body {
   background: var(--app-surface);
   color: var(--app-text);
 }
-
-.App {
-  padding: min(5%, 20px);
-}
-
-.container {
-  padding: 1.5rem 1.5rem;
-  box-shadow:
-    rgba(0, 0, 0, 0.05) 0px 1px 3px 0px,
-    rgba(0, 0, 0, 0.05) 0px 10px 15px -5px;
-  border-radius: var(--app-radius-md);
-  background-color: var(--app-background);
-}
-
-.app__layout {
-  padding-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
-.app__content {
-  height: 700px;
-  flex-grow: 3;
-}
