@@ -9,7 +9,10 @@
 }
 
 .shell__content {
-  height: 700px;
+  /*
+  TODO: FIX height 
+  min-height: 700px;
+ */
   flex-grow: 3;
 }
 

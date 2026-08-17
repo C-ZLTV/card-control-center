@@ -12,7 +12,6 @@ export function Header() {
   const [opened, { open, close }] = useDisclosure(false);
 
   const { label } = useCurrentRoute();
-  console.log(label);
 
   return (
     <header className="container header">

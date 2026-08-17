@@ -1,0 +1,555 @@
+{
+  "cards": [
+    {
+      "last4": "4821",
+      "customerName": "Marco Rossi",
+      "branchCity": "Milano",
+      "branchCode": "MI001",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2024-03-15",
+      "expirationDate": "2028-03-31"
+    },
+    {
+      "last4": "7394",
+      "customerName": "Giulia Bianchi",
+      "branchCity": "Roma",
+      "branchCode": "RM014",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "active",
+      "activationDate": "2023-11-08",
+      "expirationDate": "2027-11-30"
+    },
+    {
+      "last4": "1657",
+      "customerName": "Luca Ferri",
+      "branchCity": "Torino",
+      "branchCode": "TO007",
+      "cardNetwork": "Visa",
+      "cardStatus": "blocked",
+      "activationDate": "2022-06-21",
+      "expirationDate": "2026-06-30"
+    },
+    {
+      "last4": "9043",
+      "customerName": "Elena Conti",
+      "branchCity": "Bologna",
+      "branchCode": "BO003",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "active",
+      "activationDate": "2025-01-17",
+      "expirationDate": "2029-01-31"
+    },
+    {
+      "last4": "6285",
+      "customerName": "Andrea Romano",
+      "branchCity": "Napoli",
+      "branchCode": "NA011",
+      "cardNetwork": "Visa",
+      "cardStatus": "suspended",
+      "activationDate": "2024-07-04",
+      "expirationDate": "2028-07-31"
+    },
+    {
+      "last4": "3519",
+      "customerName": "Sara Moretti",
+      "branchCity": "Firenze",
+      "branchCode": "FI005",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "pendingActivation",
+      "activationDate": "2026-08-10",
+      "expirationDate": "2030-08-31"
+    },
+    {
+      "last4": "8176",
+      "customerName": "Davide Greco",
+      "branchCity": "Genova",
+      "branchCode": "GE002",
+      "cardNetwork": "Visa",
+      "cardStatus": "inactive",
+      "activationDate": "2021-09-12",
+      "expirationDate": "2025-09-30"
+    },
+    {
+      "last4": "2468",
+      "customerName": "Francesca Rinaldi",
+      "branchCity": "Palermo",
+      "branchCode": "PA008",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "active",
+      "activationDate": "2025-05-22",
+      "expirationDate": "2029-05-31"
+    },
+    {
+      "last4": "5932",
+      "customerName": "Matteo De Luca",
+      "branchCity": "Verona",
+      "branchCode": "VR004",
+      "cardNetwork": "Visa",
+      "cardStatus": "expired",
+      "activationDate": "2021-02-14",
+      "expirationDate": "2025-02-28"
+    },
+    {
+      "last4": "7410",
+      "customerName": "Chiara Galli",
+      "branchCity": "Venezia",
+      "branchCode": "VE006",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "active",
+      "activationDate": "2024-10-03",
+      "expirationDate": "2028-10-31"
+    },
+    {
+      "last4": "3264",
+      "customerName": "Alessandro Costa",
+      "branchCity": "Padova",
+      "branchCode": "PD009",
+      "cardNetwork": "Visa",
+      "cardStatus": "blocked",
+      "activationDate": "2023-04-19",
+      "expirationDate": "2027-04-30"
+    },
+    {
+      "last4": "8751",
+      "customerName": "Valentina Martini",
+      "branchCity": "Bari",
+      "branchCode": "BA012",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "active",
+      "activationDate": "2025-09-07",
+      "expirationDate": "2029-09-30"
+    },
+    {
+      "last4": "4186",
+      "customerName": "Simone Barbieri",
+      "branchCity": "Brescia",
+      "branchCode": "BS010",
+      "cardNetwork": "Visa",
+      "cardStatus": "suspended",
+      "activationDate": "2024-01-28",
+      "expirationDate": "2028-01-31"
+    },
+    {
+      "last4": "6029",
+      "customerName": "Martina Esposito",
+      "branchCity": "Cagliari",
+      "branchCode": "CA013",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "inactive",
+      "activationDate": "2022-12-05",
+      "expirationDate": "2026-12-31"
+    },
+    {
+      "last4": "9347",
+      "customerName": "Stefano Ricci",
+      "branchCity": "Parma",
+      "branchCode": "PR015",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2026-02-11",
+      "expirationDate": "2030-02-28"
+    },
+    {
+      "last4": "5173",
+      "customerName": "Laura Fontana",
+      "branchCity": "Modena",
+      "branchCode": "MO016",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "active",
+      "activationDate": "2024-05-12",
+      "expirationDate": "2028-05-31"
+    },
+    {
+      "last4": "2846",
+      "customerName": "Fabio Marini",
+      "branchCity": "Trieste",
+      "branchCode": "TS017",
+      "cardNetwork": "Visa",
+      "cardStatus": "blocked",
+      "activationDate": "2023-08-24",
+      "expirationDate": "2027-08-31"
+    },
+    {
+      "last4": "6902",
+      "customerName": "Federica Villa",
+      "branchCity": "Perugia",
+      "branchCode": "PG018",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "active",
+      "activationDate": "2025-02-06",
+      "expirationDate": "2029-02-28"
+    },
+    {
+      "last4": "4318",
+      "customerName": "Giorgio Colombo",
+      "branchCity": "Ravenna",
+      "branchCode": "RA019",
+      "cardNetwork": "Visa",
+      "cardStatus": "suspended",
+      "activationDate": "2024-09-16",
+      "expirationDate": "2028-09-30"
+    },
+    {
+      "last4": "7529",
+      "customerName": "Silvia Ferrara",
+      "branchCity": "Pisa",
+      "branchCode": "PI020",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "active",
+      "activationDate": "2025-06-11",
+      "expirationDate": "2029-06-30"
+    },
+    {
+      "last4": "3085",
+      "customerName": "Roberto Leone",
+      "branchCity": "Livorno",
+      "branchCode": "LI021",
+      "cardNetwork": "Visa",
+      "cardStatus": "inactive",
+      "activationDate": "2022-04-03",
+      "expirationDate": "2026-04-30"
+    },
+    {
+      "last4": "8641",
+      "customerName": "Alice Santoro",
+      "branchCity": "Siena",
+      "branchCode": "SI022",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "pendingActivation",
+      "activationDate": "2026-08-05",
+      "expirationDate": "2030-08-31"
+    },
+    {
+      "last4": "2754",
+      "customerName": "Nicola Riva",
+      "branchCity": "Bergamo",
+      "branchCode": "BG023",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2024-11-19",
+      "expirationDate": "2028-11-30"
+    },
+    {
+      "last4": "6197",
+      "customerName": "Irene Caruso",
+      "branchCity": "Lecce",
+      "branchCode": "LE024",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "blocked",
+      "activationDate": "2023-07-08",
+      "expirationDate": "2027-07-31"
+    },
+    {
+      "last4": "5402",
+      "customerName": "Paolo Giordano",
+      "branchCity": "Ancona",
+      "branchCode": "AN025",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2025-03-14",
+      "expirationDate": "2029-03-31"
+    },
+    {
+      "last4": "7936",
+      "customerName": "Marta Pellegrini",
+      "branchCity": "Lucca",
+      "branchCode": "LU026",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "suspended",
+      "activationDate": "2024-02-27",
+      "expirationDate": "2028-02-29"
+    },
+    {
+      "last4": "1863",
+      "customerName": "Enrico Neri",
+      "branchCity": "Ferrara",
+      "branchCode": "FE027",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2025-07-21",
+      "expirationDate": "2029-07-31"
+    },
+    {
+      "last4": "9258",
+      "customerName": "Claudia Testa",
+      "branchCity": "Vicenza",
+      "branchCode": "VI028",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "expired",
+      "activationDate": "2021-05-17",
+      "expirationDate": "2025-05-31"
+    },
+    {
+      "last4": "3471",
+      "customerName": "Daniele Fabbri",
+      "branchCity": "Treviso",
+      "branchCode": "TV029",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2024-06-09",
+      "expirationDate": "2028-06-30"
+    },
+    {
+      "last4": "6584",
+      "customerName": "Elisa Amato",
+      "branchCity": "Rimini",
+      "branchCode": "RN030",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "inactive",
+      "activationDate": "2022-10-22",
+      "expirationDate": "2026-10-31"
+    },
+    {
+      "last4": "8125",
+      "customerName": "Massimo Sala",
+      "branchCity": "Piacenza",
+      "branchCode": "PC031",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2025-04-18",
+      "expirationDate": "2029-04-30"
+    },
+    {
+      "last4": "4739",
+      "customerName": "Beatrice Sanna",
+      "branchCity": "Sassari",
+      "branchCode": "SS032",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "blocked",
+      "activationDate": "2023-12-11",
+      "expirationDate": "2027-12-31"
+    },
+    {
+      "last4": "2618",
+      "customerName": "Riccardo Serra",
+      "branchCity": "Como",
+      "branchCode": "CO033",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2026-01-23",
+      "expirationDate": "2030-01-31"
+    },
+    {
+      "last4": "7064",
+      "customerName": "Anna Bellini",
+      "branchCity": "Mantova",
+      "branchCode": "MN034",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "suspended",
+      "activationDate": "2024-04-07",
+      "expirationDate": "2028-04-30"
+    },
+    {
+      "last4": "3957",
+      "customerName": "Lorenzo Valentini",
+      "branchCity": "Arezzo",
+      "branchCode": "AR035",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2025-08-13",
+      "expirationDate": "2029-08-31"
+    },
+    {
+      "last4": "8412",
+      "customerName": "Monica Orlando",
+      "branchCity": "Frosinone",
+      "branchCode": "FR036",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "pendingActivation",
+      "activationDate": "2026-08-12",
+      "expirationDate": "2030-08-31"
+    },
+    {
+      "last4": "5296",
+      "customerName": "Stefania Grassi",
+      "branchCity": "Varese",
+      "branchCode": "VA037",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2024-12-02",
+      "expirationDate": "2028-12-31"
+    },
+    {
+      "last4": "6743",
+      "customerName": "Tommaso Rizzi",
+      "branchCity": "Novara",
+      "branchCode": "NO038",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "blocked",
+      "activationDate": "2023-03-26",
+      "expirationDate": "2027-03-31"
+    },
+    {
+      "last4": "3185",
+      "customerName": "Valeria Longo",
+      "branchCity": "Pescara",
+      "branchCode": "PE039",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2025-10-15",
+      "expirationDate": "2029-10-31"
+    },
+    {
+      "last4": "9072",
+      "customerName": "Alberto Monti",
+      "branchCity": "Rieti",
+      "branchCode": "RI040",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "inactive",
+      "activationDate": "2022-08-31",
+      "expirationDate": "2026-08-31"
+    },
+    {
+      "last4": "4561",
+      "customerName": "Serena Fiore",
+      "branchCity": "Latina",
+      "branchCode": "LT041",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2024-08-20",
+      "expirationDate": "2028-08-31"
+    },
+    {
+      "last4": "7824",
+      "customerName": "Cristian Parisi",
+      "branchCity": "Matera",
+      "branchCode": "MT042",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "suspended",
+      "activationDate": "2023-10-06",
+      "expirationDate": "2027-10-31"
+    },
+    {
+      "last4": "2395",
+      "customerName": "Valentina De Angelis",
+      "branchCity": "Ragusa",
+      "branchCode": "RG043",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2026-03-05",
+      "expirationDate": "2030-03-31"
+    },
+    {
+      "last4": "6158",
+      "customerName": "Filippo Benedetti",
+      "branchCity": "Asti",
+      "branchCode": "AT044",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "expired",
+      "activationDate": "2021-07-14",
+      "expirationDate": "2025-07-31"
+    },
+    {
+      "last4": "8047",
+      "customerName": "Elena Martini",
+      "branchCity": "Cremona",
+      "branchCode": "CR045",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2025-11-09",
+      "expirationDate": "2029-11-30"
+    },
+    {
+      "last4": "3629",
+      "customerName": "Giovanni Ruggieri",
+      "branchCity": "Cosenza",
+      "branchCode": "CS046",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "blocked",
+      "activationDate": "2024-06-28",
+      "expirationDate": "2028-06-30"
+    },
+    {
+      "last4": "5716",
+      "customerName": "Lucia Romano",
+      "branchCity": "Salerno",
+      "branchCode": "SA047",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2025-12-17",
+      "expirationDate": "2029-12-31"
+    },
+    {
+      "last4": "9432",
+      "customerName": "Andrea Marchetti",
+      "branchCity": "Viterbo",
+      "branchCode": "VT048",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "suspended",
+      "activationDate": "2024-03-30",
+      "expirationDate": "2028-03-31"
+    },
+    {
+      "last4": "2865",
+      "customerName": "Sara Mancini",
+      "branchCity": "Brindisi",
+      "branchCode": "BR049",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2026-04-12",
+      "expirationDate": "2030-04-30"
+    },
+    {
+      "last4": "7308",
+      "customerName": "Matteo Gatti",
+      "branchCity": "Lodi",
+      "branchCode": "LO050",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "inactive",
+      "activationDate": "2022-11-18",
+      "expirationDate": "2026-11-30"
+    },
+    {
+      "last4": "5194",
+      "customerName": "Francesca Rossetti",
+      "branchCity": "Sondrio",
+      "branchCode": "SO051",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2025-01-29",
+      "expirationDate": "2029-01-31"
+    },
+    {
+      "last4": "6472",
+      "customerName": "Davide Martinelli",
+      "branchCity": "Imperia",
+      "branchCode": "IM052",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "pendingActivation",
+      "activationDate": "2026-08-14",
+      "expirationDate": "2030-08-31"
+    },
+    {
+      "last4": "3851",
+      "customerName": "Chiara Valentini",
+      "branchCity": "Savona",
+      "branchCode": "SV053",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2024-10-25",
+      "expirationDate": "2028-10-31"
+    },
+    {
+      "last4": "9264",
+      "customerName": "Marco Pellegrini",
+      "branchCity": "Rovigo",
+      "branchCode": "RO054",
+      "cardNetwork": "Mastercard",
+      "cardStatus": "blocked",
+      "activationDate": "2023-09-13",
+      "expirationDate": "2027-09-30"
+    },
+    {
+      "last4": "1578",
+      "customerName": "Alice Ferri",
+      "branchCity": "Belluno",
+      "branchCode": "BL055",
+      "cardNetwork": "Visa",
+      "cardStatus": "active",
+      "activationDate": "2026-05-18",
+      "expirationDate": "2030-05-31"
+    }
+  ],
+  "total": "55"
+}

@@ -18,8 +18,6 @@ export function HelpMenu() {
         <HoverCard.Dropdown>
           <div className="help__navigation">
             {infoNavItems.map((item) => {
-              console.log("passo className:", "navigation__item--help");
-
               return (
                 <NavigationItem
                   className={"navigation__item--help"}

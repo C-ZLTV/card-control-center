@@ -18,8 +18,6 @@ export function NavigationItem({
   onNavigate,
   className,
 }: NavigationItemProps) {
-  console.log("NavigationItem className:", className);
-
   return (
     <Link to={to} onClick={onNavigate}>
       <div className={`navigation__item ${className ?? ""}`}>

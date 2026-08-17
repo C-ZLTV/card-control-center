@@ -1,0 +1,15 @@
+.table {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.table_loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.table__empty-cell {
+  height: 2.3rem;
+}

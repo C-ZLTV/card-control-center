@@ -8,7 +8,6 @@ import { routes } from "../../app/navigation";
 
 export function WipPage() {
   const { label } = useCurrentRoute();
-  console.log(label);
 
   const pageLabel = label ?? "this";
 
