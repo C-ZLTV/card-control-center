@@ -1,8 +1,8 @@
 export type CardStatus =
   | "active"
-  | "inactive"
   | "blocked"
   | "expired"
+  | "expiring"
   | "pendingActivation"
   | "suspended";
 
