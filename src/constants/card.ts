@@ -1,5 +1,5 @@
-import { colors } from "../../../theme/colors";
-import { type CardNetwork, type CardStatus } from "./card-types";
+import { colors } from "../theme/colors";
+import { type CardNetwork, type CardStatus } from "../types/card";
 
 export const Networks = {
   VISA: "Visa",

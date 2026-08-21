@@ -23,3 +23,13 @@ export interface CardsResponse {
   cards: Card[];
   total: number;
 }
+
+export type CardFilters = {
+  branchCode?: string;
+  status?: CardStatus | "all";
+  startExpirationDate?: string;
+  endExpirationDate?: string;
+  startActivationDate?: string;
+  endActivationDate?: string;
+  pan?: string;
+};

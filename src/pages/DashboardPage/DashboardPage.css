@@ -1,0 +1,27 @@
+.dashboard__filters {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  margin-bottom: 1rem;
+}
+
+.dashboard__filter-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+@media (min-width: 768px) {
+  .dashboard__filters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}

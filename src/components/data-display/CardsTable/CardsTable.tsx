@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { Table, Loader, ActionIcon, Button, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import type { Card, CardStatus } from "./card-types";
+import type { Card, CardStatus } from "../../../types/card";
 import { routes } from "../../../app/navigation";
 import "./CardTable.css";
 import visaLogo from "../../../assets/images/visa-logo.webp";
 import mastercardLogo from "../../../assets/images/mastercard-logo.webp";
-import { Networks, statusColors } from "./card-variables";
+import { Networks, statusColors } from "../../../constants/card";
 import { Ellipsis } from "lucide-react";
 
 type NavigationItemProps = {

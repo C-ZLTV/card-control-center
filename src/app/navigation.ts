@@ -1,4 +1,4 @@
-import { type LucideIcon } from "lucide-react";
+import { type RouteMeta } from "../types/navigation";
 import {
   LayoutDashboard,
   Users,
@@ -20,15 +20,6 @@ export const routes = {
   DOCUMENTATION: "/support",
   CONTACTS: "/contacts",
   OPERATOR: "/operator",
-};
-
-export type RouteCategory = "main" | "info" | "utility";
-
-export type RouteMeta = {
-  label: string;
-  path: string;
-  icon?: LucideIcon;
-  category: RouteCategory;
 };
 
 export const routeMeta: RouteMeta[] = [

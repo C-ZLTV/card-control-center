@@ -22,10 +22,6 @@
 
   background: var(--app-surface);
   color: var(--app-primary);
-
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.08),
-    0 0 0 8px color-mix(in srgb, var(--app-primary) 6%, transparent);
 }
 
 .wip__icon {
@@ -38,14 +34,15 @@
 
 .wip__label {
   color: var(--app-primary);
-
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.14em;
+  margin-bottom: 1rem;
 }
 
 .wip__content h1 {
   color: var(--app-heading);
+  margin: 1.5rem 0;
 
   font-size: 1.8rem;
   font-weight: 700;
