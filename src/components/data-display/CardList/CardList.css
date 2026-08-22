@@ -1,0 +1,16 @@
+.card {
+  margin-bottom: 1rem;
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.card__status {
+  display: flex;
+  gap: 1rem;
+}

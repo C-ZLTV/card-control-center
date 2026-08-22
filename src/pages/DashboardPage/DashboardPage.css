@@ -19,9 +19,27 @@
   justify-content: end;
 }
 
+.dashboard__table {
+  display: none;
+}
+
+.dashboard__card-list {
+  display: block;
+}
+
 @media (min-width: 768px) {
   .dashboard__filters {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
+  }
+}
+
+@media (min-width: 968px) {
+  .dashboard__table {
+    display: block;
+  }
+
+  .dashboard__card-list {
+    display: none;
   }
 }

@@ -1,0 +1,10 @@
+.table__network-icon {
+  max-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  border: 1px var(--app-border) solid;
+  border-radius: var(--app-radius-sm);
+}

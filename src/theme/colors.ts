@@ -30,5 +30,5 @@ export const lightColors = {
   heading: "#111827",
   text: "#374151",
   textSecondary: "#6B7280",
-  placeholder: "#9CA3AF",
+  placeholder: "#9ca3af",
 } as const;

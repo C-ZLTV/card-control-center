@@ -1,6 +1,19 @@
-import { createTheme } from "@mantine/core";
+import { createTheme, Card, Select, TextInput } from "@mantine/core";
+import { DatePickerInput } from "@mantine/dates";
 
 import { colors, darkColors, lightColors } from "./colors";
+
+const inputStyles = {
+  input: {
+    backgroundColor: "var(--app-surface)",
+    borderColor: "var(--app-border)",
+    color: "var(--app-text)",
+  },
+
+  label: {
+    color: "var(--app-text)",
+  },
+};
 
 export const theme = createTheme({
   fontFamily: "Inter, system-ui, sans-serif",
@@ -9,6 +22,27 @@ export const theme = createTheme({
     fontFamily: "Inter, system-ui, sans-serif",
 
     fontWeight: "600",
+  },
+  components: {
+    Card: Card.extend({
+      styles: {
+        root: {
+          backgroundColor: "var(--app-surface)",
+          borderColor: "var(--app-border)",
+        },
+      },
+    }),
+    TextInput: TextInput.extend({
+      styles: inputStyles,
+    }),
+
+    Select: Select.extend({
+      styles: inputStyles,
+    }),
+
+    DatePickerInput: DatePickerInput.extend({
+      styles: inputStyles,
+    }),
   },
 
   primaryColor: "brand",

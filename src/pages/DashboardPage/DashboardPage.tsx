@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Pagination, TextInput, Select, Button } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
-import { CardsTable } from "../../components/data-display/CardsTable/CardsTable";
 import cardData from "../../test/API/card-list.json";
 import type { Card, CardFilters, CardStatus } from "../../types/card";
 import { CardStatuses } from "../../constants/card";
 import "./DashboardPage.css";
+import { CardList } from "../../components/data-display/CardList/CardList";
+import { CardsTable } from "../../components/data-display/CardsTable/CardsTable";
 
 export function DashboardPage() {
   const statusList: (CardStatus | "all")[] = ["all", ...Object.values(CardStatuses)];
@@ -94,7 +95,7 @@ export function DashboardPage() {
         />
         <DatePickerInput
           type="range"
-          label="Expiration dates range"
+          label="Expiration range"
           placeholder=" Expiration range"
           value={[filters.startExpirationDate ?? null, filters.endExpirationDate ?? null]}
           onChange={(value) => onDateChange(value, "Expiration")}
@@ -107,7 +108,14 @@ export function DashboardPage() {
         <Button variant="filled">Search</Button>
       </div>
 
-      <CardsTable data={data} isLoading={isLoading} />
+      <div className="dashboard__card-list">
+        <CardList data={data} isLoading={isLoading} />
+      </div>
+
+      <div className="dashboard__table">
+        <CardsTable data={data} isLoading={isLoading} />
+      </div>
+
       <div className="dashboard__pagination">
         <Pagination total={totalPages} value={page} onChange={setPage} color="var(--app-primary)" />
       </div>

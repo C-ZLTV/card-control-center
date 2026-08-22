@@ -13,3 +13,12 @@ h1 {
 .title {
   margin-bottom: 2rem;
 }
+
+.mantine-Input-input::placeholder {
+  color: var(--app-placeholder);
+  opacity: 1;
+}
+.mantine-DatePickerInput-placeholder {
+  color: var(--app-placeholder);
+  opacity: 1;
+}

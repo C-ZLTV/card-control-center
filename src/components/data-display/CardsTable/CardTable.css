@@ -11,32 +11,9 @@
 }
 
 .table__empty-cell {
-  height: 2.3rem;
-}
-
-.table__network-icon {
-  max-width: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0;
-  background-color: #f6f8fb;
-  border: 1px var(--app-border) solid;
-  border-radius: var(--app-radius-sm);
+  height: 2.95rem;
 }
 
 .table__redirect-link {
   text-decoration: underline;
-}
-
-.table__status {
-  display: flex;
-  align-items: center;
-}
-
-.table__status-visual {
-  width: 10px;
-  height: 10px;
-  border-radius: var(--app-radius-xl);
-  margin-right: 0.4rem;
 }

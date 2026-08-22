@@ -1,38 +1,17 @@
 import { Link } from "react-router-dom";
-import { Table, Loader, ActionIcon, Button, Modal } from "@mantine/core";
+import { Table, Loader, ActionIcon, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import type { Card, CardStatus } from "../../../types/card";
+import type { Card } from "../../../types/card";
 import { routes } from "../../../app/navigation";
 import "./CardTable.css";
-import visaLogo from "../../../assets/images/visa-logo.webp";
-import mastercardLogo from "../../../assets/images/mastercard-logo.webp";
-import { Networks, statusColors } from "../../../constants/card";
 import { Ellipsis } from "lucide-react";
+import { StatusItem } from "../StatusItem/StatusItem";
+import { CardNetworkLogo } from "../CardNetworkLogo/CardNetworkLogo";
 
 type NavigationItemProps = {
   data: Card[];
   isLoading: boolean;
 };
-
-function StatusItem({ status }: { status: CardStatus }) {
-  if (!status) {
-    return;
-  }
-
-  const color = statusColors[status] ?? "var(--app-text-secondary)";
-
-  return (
-    <div className="table__status">
-      <div
-        aria-hidden="true"
-        className="table__status-visual"
-        style={{ backgroundColor: color }}
-      ></div>
-      {status}
-      <div></div>
-    </div>
-  );
-}
 
 export function CardsTable({ data, isLoading }: NavigationItemProps) {
   const [opened, { open, close }] = useDisclosure(false);
@@ -48,13 +27,7 @@ export function CardsTable({ data, isLoading }: NavigationItemProps) {
   const rows = data.map((element) => (
     <Table.Tr key={element.last4}>
       <Table.Td>
-        <div className="table__network-icon">
-          {element.cardNetwork === Networks.MASTERCARD ? (
-            <img src={mastercardLogo} width={20} alt="Mastercard" />
-          ) : (
-            <img src={visaLogo} width={32} alt="Visa" />
-          )}
-        </div>
+        <CardNetworkLogo cardNetwork={element.cardNetwork} />
       </Table.Td>
       <Table.Td>
         <Link className="table__redirect-link" to={routes.TRANSACTIONS}>

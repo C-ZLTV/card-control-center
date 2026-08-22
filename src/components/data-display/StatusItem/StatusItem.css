@@ -1,0 +1,11 @@
+.table__status {
+  display: flex;
+  align-items: center;
+}
+
+.table__status-visual {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--app-radius-xl);
+  margin-right: 0.4rem;
+}
