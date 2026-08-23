@@ -1,4 +1,4 @@
-import { createTheme, Card, Select, TextInput } from "@mantine/core";
+import { createTheme, Card, Select, TextInput, Modal } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 
 import { colors, darkColors, lightColors } from "./colors";
@@ -29,6 +29,30 @@ export const theme = createTheme({
         root: {
           backgroundColor: "var(--app-surface)",
           borderColor: "var(--app-border)",
+        },
+      },
+    }),
+    Modal: Modal.extend({
+      styles: {
+        content: {
+          backgroundColor: "var(--app-background)",
+          border: "1px solid var(--app-border)",
+        },
+
+        header: {
+          backgroundColor: "var(--app-background)",
+        },
+
+        body: {
+          backgroundColor: "var(--app-background)",
+        },
+
+        title: {
+          color: "var(--app-heading)",
+        },
+
+        close: {
+          color: "var(--app-text-secondary)",
         },
       },
     }),

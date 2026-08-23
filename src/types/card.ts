@@ -33,3 +33,11 @@ export type CardFilters = {
   endActivationDate?: string;
   pan?: string;
 };
+
+export interface CardSettings {
+  cardBlocked: boolean;
+  contactlessEnabled: boolean;
+  onlinePaymentsEnabled: boolean;
+  dailyLimitEnabled: boolean;
+  dailyLimit: number;
+}

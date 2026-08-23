@@ -32,14 +32,26 @@ export function DashboardPage() {
     return data.slice(offset, offset + limit);
   }
 
-  function onDateChange(value: [string | null, string | null], dateType: string) {
+  function updateFilter<filter extends keyof CardFilters>(key: filter, value: CardFilters[filter]) {
+    setFilters((current) => ({
+      ...current,
+      [key]: value,
+    }));
+  }
+
+  function onDateChange(
+    value: [string | null, string | null],
+    dateType: "Activation" | "Expiration",
+  ) {
     const [startDate, endDate] = value;
 
-    setFilters({
-      ...filters,
-      [`start${dateType}Date`]: startDate ?? "",
-      [`end${dateType}Date`]: endDate ?? "",
-    });
+    if (dateType === "Activation") {
+      updateFilter("startActivationDate", startDate ?? "");
+      updateFilter("endActivationDate", endDate ?? "");
+    } else {
+      updateFilter("startExpirationDate", startDate ?? "");
+      updateFilter("endExpirationDate", endDate ?? "");
+    }
   }
 
   async function getData(page: number) {
@@ -70,13 +82,13 @@ export function DashboardPage() {
           label="PAN"
           placeholder="PAN"
           value={filters.pan}
-          onChange={(e) => setFilters({ ...filters, pan: e.target.value })}
+          onChange={(e) => updateFilter("pan", e.target.value)}
         />
         <TextInput
           label="Branch Code"
           placeholder="Branch Code"
           value={filters.branchCode}
-          onChange={(e) => setFilters({ ...filters, branchCode: e.target.value })}
+          onChange={(e) => updateFilter("branchCode", e.target.value)}
         />
         <Select
           label="Status"
@@ -84,7 +96,7 @@ export function DashboardPage() {
           defaultValue={statusList[0]}
           value={filters.status}
           data={statusList}
-          onChange={(value) => setFilters({ ...filters, status: value ?? undefined })}
+          onChange={(value) => updateFilter("status", value ?? undefined)}
         />
         <DatePickerInput
           type="range"

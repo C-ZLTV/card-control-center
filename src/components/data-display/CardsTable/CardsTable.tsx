@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Table, Loader, ActionIcon, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -7,6 +8,7 @@ import "./CardTable.css";
 import { Ellipsis } from "lucide-react";
 import { StatusItem } from "../StatusItem/StatusItem";
 import { CardNetworkLogo } from "../CardNetworkLogo/CardNetworkLogo";
+import { CardDetail } from "../CardDetail/CardDetail";
 
 type NavigationItemProps = {
   data: Card[];
@@ -15,6 +17,7 @@ type NavigationItemProps = {
 
 export function CardsTable({ data, isLoading }: NavigationItemProps) {
   const [opened, { open, close }] = useDisclosure(false);
+  const [card, setCard] = useState<Card>();
 
   const PAGE_SIZE = 10;
 
@@ -42,12 +45,17 @@ export function CardsTable({ data, isLoading }: NavigationItemProps) {
       <Table.Td>{element.activationDate}</Table.Td>
       <Table.Td>{element.expirationDate}</Table.Td>
       <Table.Td>
-        <ActionIcon onClick={open} variant="outline">
+        <ActionIcon onClick={() => onOpenDetail(element)} variant="outline">
           <Ellipsis />
         </ActionIcon>
       </Table.Td>
     </Table.Tr>
   ));
+
+  function onOpenDetail(card: Card) {
+    setCard(card);
+    open();
+  }
 
   return (
     <>
@@ -78,7 +86,7 @@ export function CardsTable({ data, isLoading }: NavigationItemProps) {
       </div>
 
       <Modal opened={opened} onClose={close} title="Card Details">
-        Card
+        {card && <CardDetail card={card} />}
       </Modal>
     </>
   );

@@ -1,0 +1,122 @@
+.detail {
+  margin: 0 auto;
+}
+
+.detail__card {
+  position: relative;
+  width: 100%;
+
+  aspect-ratio: 1.586 / 1;
+  border-radius: var(--app-radius-lg);
+  background: linear-gradient(135deg, #0f172a 0%, #164e63 55%, #0891b2 100%);
+
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+.detail__card-contacless {
+  position: absolute;
+  top: 7%;
+  right: 7%;
+}
+
+.detail__pan {
+  position: absolute;
+  bottom: 50%;
+  left: 7%;
+  letter-spacing: 0.35em;
+}
+
+.detail__card-name {
+  position: absolute;
+  bottom: 25%;
+  left: 7%;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.detail__card-exp {
+  position: absolute;
+  bottom: 7%;
+  left: 7%;
+  color: #9ca3af;
+}
+.detail__card-exp-text {
+  font-size: 0.6rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.detail__card-exp-date {
+  font-size: 0.8rem;
+}
+.detail__card-logo {
+  position: absolute;
+  line-height: 0;
+  bottom: 7%;
+  right: 7%;
+  width: 20%;
+}
+
+.detail__section-title {
+  color: var(--app-text-secondary);
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.detail__section-item {
+  background-color: var(--app-surface);
+  border-radius: var(--app-radius-md);
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail__section-main-text {
+  font-weight: 600;
+}
+
+.detail__section-secondary-text {
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--app-text-secondary);
+}
+
+.detail__transactions {
+  margin-bottom: 1.5rem;
+}
+
+.detail__transactions-link {
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  color: var(--app-text-secondary);
+}
+
+.detail__limit {
+  margin: 1.5rem 1rem;
+}
+
+.detail__limit-value {
+  margin-bottom: 1rem;
+  color: var(--app-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.detail__limit-range {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  color: var(--app-text-secondary);
+  font-size: 0.75rem;
+}
+
+.detail__actions-submit {
+  display: flex;
+  justify-content: center;
+}
