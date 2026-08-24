@@ -9,6 +9,7 @@ export type CardStatus =
 export type CardNetwork = "Visa" | "Mastercard";
 
 export interface Card {
+  cardId: string;
   last4: string;
   customerName: string;
   branchCity: string;
@@ -35,6 +36,7 @@ export type CardFilters = {
 };
 
 export interface CardSettings {
+  cardId: string;
   cardBlocked: boolean;
   contactlessEnabled: boolean;
   onlinePaymentsEnabled: boolean;

@@ -9,13 +9,15 @@ import { Ellipsis } from "lucide-react";
 import { StatusItem } from "../StatusItem/StatusItem";
 import { CardNetworkLogo } from "../CardNetworkLogo/CardNetworkLogo";
 import { CardDetail } from "../CardDetail/CardDetail";
+import { ServiceError } from "../../feeback/ServiceError";
 
 type NavigationItemProps = {
   data: Card[];
   isLoading: boolean;
+  responseError: boolean;
 };
 
-export function CardsTable({ data, isLoading }: NavigationItemProps) {
+export function CardsTable({ data, isLoading, responseError }: NavigationItemProps) {
   const [opened, { open, close }] = useDisclosure(false);
   const [card, setCard] = useState<Card>();
 
@@ -55,6 +57,9 @@ export function CardsTable({ data, isLoading }: NavigationItemProps) {
   function onOpenDetail(card: Card) {
     setCard(card);
     open();
+  }
+  if (responseError) {
+    return <ServiceError message="Non è stato possibile recuperare la lista Carte." withIcon />;
   }
 
   return (

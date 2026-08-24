@@ -7,6 +7,6 @@ export const Directions = {
 } as const satisfies Record<string, TransactionDirection>;
 
 export const directionConfigs = {
-  [Directions.CREDIT]: { color: colors.success, symbol: "-" },
-  [Directions.DEBIT]: { color: colors.danger, symbol: "+" },
+  [Directions.CREDIT]: { color: colors.success, symbol: "+" },
+  [Directions.DEBIT]: { color: colors.danger, symbol: "-" },
 };

@@ -65,14 +65,18 @@
   text-transform: uppercase;
   margin-bottom: 0.5rem;
 }
+
 .detail__section-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.detail__section-item,
+.detail__section-item--loading {
   background-color: var(--app-surface);
   border-radius: var(--app-radius-md);
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .detail__section-main-text {
@@ -117,6 +121,7 @@
 }
 
 .detail__actions-submit {
+  margin: 1rem 0;
   display: flex;
   justify-content: center;
 }

@@ -1,0 +1,16 @@
+.error {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  p {
+    margin: 0;
+  }
+}
+.error__title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}

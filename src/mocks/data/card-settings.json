@@ -1,0 +1,444 @@
+{
+  "settings": [
+    {
+      "cardId": "CARD-CTR-84739261501",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 3000
+    },
+    {
+      "cardId": "CARD-CTR-84739261502",
+      "cardBlocked": false,
+      "contactlessEnabled": false,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261503",
+      "cardBlocked": true,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261504",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 200
+    },
+    {
+      "cardId": "CARD-CTR-84739261505",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 500
+    },
+    {
+      "cardId": "CARD-CTR-84739261506",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261507",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261508",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 1500
+    },
+    {
+      "cardId": "CARD-CTR-84739261509",
+      "cardBlocked": false,
+      "contactlessEnabled": false,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 500
+    },
+    {
+      "cardId": "CARD-CTR-84739261510",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 1500
+    },
+    {
+      "cardId": "CARD-CTR-84739261511",
+      "cardBlocked": true,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 2000
+    },
+    {
+      "cardId": "CARD-CTR-84739261512",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261513",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 1500
+    },
+    {
+      "cardId": "CARD-CTR-84739261514",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 1000
+    },
+    {
+      "cardId": "CARD-CTR-84739261515",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 2500
+    },
+    {
+      "cardId": "CARD-CTR-84739261516",
+      "cardBlocked": true,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 2500
+    },
+    {
+      "cardId": "CARD-CTR-84739261517",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 1000
+    },
+    {
+      "cardId": "CARD-CTR-84739261518",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261519",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 2000
+    },
+    {
+      "cardId": "CARD-CTR-84739261520",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 2000
+    },
+    {
+      "cardId": "CARD-CTR-84739261521",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 750
+    },
+    {
+      "cardId": "CARD-CTR-84739261522",
+      "cardBlocked": false,
+      "contactlessEnabled": false,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 500
+    },
+    {
+      "cardId": "CARD-CTR-84739261523",
+      "cardBlocked": true,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 3000
+    },
+    {
+      "cardId": "CARD-CTR-84739261524",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 3000
+    },
+    {
+      "cardId": "CARD-CTR-84739261525",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 200
+    },
+    {
+      "cardId": "CARD-CTR-84739261526",
+      "cardBlocked": false,
+      "contactlessEnabled": false,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 200
+    },
+    {
+      "cardId": "CARD-CTR-84739261527",
+      "cardBlocked": false,
+      "contactlessEnabled": false,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 200
+    },
+    {
+      "cardId": "CARD-CTR-84739261528",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 1500
+    },
+    {
+      "cardId": "CARD-CTR-84739261529",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 2500
+    },
+    {
+      "cardId": "CARD-CTR-84739261530",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 1000
+    },
+    {
+      "cardId": "CARD-CTR-84739261531",
+      "cardBlocked": true,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 3000
+    },
+    {
+      "cardId": "CARD-CTR-84739261532",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 1000
+    },
+    {
+      "cardId": "CARD-CTR-84739261533",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 1500
+    },
+    {
+      "cardId": "CARD-CTR-84739261534",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 3000
+    },
+    {
+      "cardId": "CARD-CTR-84739261535",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 750
+    },
+    {
+      "cardId": "CARD-CTR-84739261536",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 3000
+    },
+    {
+      "cardId": "CARD-CTR-84739261537",
+      "cardBlocked": true,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 2500
+    },
+    {
+      "cardId": "CARD-CTR-84739261538",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 1500
+    },
+    {
+      "cardId": "CARD-CTR-84739261539",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 750
+    },
+    {
+      "cardId": "CARD-CTR-84739261540",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 200
+    },
+    {
+      "cardId": "CARD-CTR-84739261541",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261542",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 500
+    },
+    {
+      "cardId": "CARD-CTR-84739261543",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 2000
+    },
+    {
+      "cardId": "CARD-CTR-84739261544",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 500
+    },
+    {
+      "cardId": "CARD-CTR-84739261545",
+      "cardBlocked": true,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 2500
+    },
+    {
+      "cardId": "CARD-CTR-84739261546",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261547",
+      "cardBlocked": false,
+      "contactlessEnabled": false,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 750
+    },
+    {
+      "cardId": "CARD-CTR-84739261548",
+      "cardBlocked": false,
+      "contactlessEnabled": false,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 1500
+    },
+    {
+      "cardId": "CARD-CTR-84739261549",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": false,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 2500
+    },
+    {
+      "cardId": "CARD-CTR-84739261550",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 3000
+    },
+    {
+      "cardId": "CARD-CTR-84739261551",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 500
+    },
+    {
+      "cardId": "CARD-CTR-84739261552",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261553",
+      "cardBlocked": true,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261554",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": true,
+      "dailyLimit": 300
+    },
+    {
+      "cardId": "CARD-CTR-84739261555",
+      "cardBlocked": false,
+      "contactlessEnabled": true,
+      "onlinePaymentsEnabled": true,
+      "dailyLimitEnabled": false,
+      "dailyLimit": 2500
+    }
+  ]
+}
