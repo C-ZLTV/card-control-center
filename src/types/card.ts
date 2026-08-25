@@ -43,3 +43,9 @@ export interface CardSettings {
   dailyLimitEnabled: boolean;
   dailyLimit: number;
 }
+
+export type CardsParams = {
+  page: number;
+  limit: number;
+  filters: CardFilters;
+};

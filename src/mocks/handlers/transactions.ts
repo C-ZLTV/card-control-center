@@ -16,11 +16,11 @@ export const transactionHandlers = [
 
     const paginatedTransactions = transactions.slice(offset, offset + limit);
 
-    /*  return HttpResponse.json({
+    return HttpResponse.json({
       transactions: paginatedTransactions,
       total: paginatedTransactions.length,
-    }); */
+    });
 
-    return HttpResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    //return HttpResponse.json({ message: "Internal Server Error" }, { status: 500 });
   }),
 ];

@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Pagination, TextInput, Select, Button } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
-import type { Card, CardFilters, CardStatus } from "../../types/card";
+import type { CardFilters, CardStatus } from "../../types/card";
 import { CardStatuses } from "../../constants/card";
 import "./DashboardPage.css";
 import { CardList } from "../../components/data-display/CardList/CardList";
 import { CardsTable } from "../../components/data-display/CardsTable/CardsTable";
-import type { RequestStatus } from "../../types/request";
-import { RequestStatuses } from "../../constants/request";
+
+import { useCards } from "../../hooks/api/useCards";
 
 export function DashboardPage() {
   const statusList: (CardStatus | "all")[] = ["all", ...Object.values(CardStatuses)];
@@ -22,15 +22,21 @@ export function DashboardPage() {
     pan: "",
   };
 
-  const [data, setData] = useState<Card[]>([]);
-  const [dataStatus, setDataStatus] = useState<RequestStatus>(RequestStatuses.IDLE);
-
   const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
   const [filters, setFilters] = useState<CardFilters>(baseFilters);
+  const [appliedFilters, setAppliedFilters] = useState<CardFilters>(baseFilters);
 
   const limit = 10;
-  const totalPages = Math.ceil(total / limit);
+
+  const { data, isLoading, isError, refetch } = useCards({
+    page,
+    limit,
+    filters: appliedFilters,
+  });
+
+  const cards = data?.cards ?? [];
+
+  const totalPages = Math.ceil((data?.total ?? 0) / limit);
 
   function updateFilter<Filter extends keyof CardFilters>(key: Filter, value: CardFilters[Filter]) {
     setFilters((current) => ({
@@ -68,7 +74,7 @@ export function DashboardPage() {
     return params ? `?${params}` : "";
   }
 
-  async function getData(page: number, filters: CardFilters) {
+  /*   async function getData(page: number, filters: CardFilters) {
     setDataStatus(RequestStatuses.LOADING);
 
     try {
@@ -99,26 +105,28 @@ export function DashboardPage() {
       setTotal(0);
     }
   }
-
+ */
   function handleSearch() {
     setPage(1);
-    getData(page, filters);
+    setAppliedFilters(filters);
+    // getData(page, filters);
   }
 
   function handleClearFilters() {
     setFilters(baseFilters);
+    setAppliedFilters(baseFilters);
     setPage(1);
   }
 
-  function handlePagigation(page: number) {
+  /*   function handlePagigation(page: number) {
     console.log(page);
     setPage(page);
     getData(page, filters);
   }
-
-  useEffect(() => {
+ */
+  /*   useEffect(() => {
     getData(page, filters);
-  }, []);
+  }, []); */
 
   return (
     <>
@@ -175,28 +183,15 @@ export function DashboardPage() {
       </div>
 
       <div className="dashboard__card-list">
-        <CardList
-          data={data}
-          isLoading={dataStatus === RequestStatuses.LOADING}
-          responseError={dataStatus === RequestStatuses.ERROR}
-        />
+        <CardList data={cards} isLoading={isLoading} responseError={isError} />
       </div>
 
       <div className="dashboard__table">
-        <CardsTable
-          data={data}
-          isLoading={dataStatus === RequestStatuses.LOADING}
-          responseError={dataStatus === RequestStatuses.ERROR}
-        />
+        <CardsTable data={cards} isLoading={isLoading} responseError={isError} />
       </div>
 
       <div className="dashboard__pagination">
-        <Pagination
-          total={totalPages}
-          value={page}
-          onChange={(value) => handlePagigation(value)}
-          color="var(--app-primary)"
-        />
+        <Pagination total={totalPages} value={page} onChange={setPage} color="var(--app-primary)" />
       </div>
     </>
   );

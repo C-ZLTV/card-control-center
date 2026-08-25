@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Slider, Switch, Button, Skeleton } from "@mantine/core";
 import { type Card } from "../../../types/card";
@@ -7,14 +7,14 @@ import mastercardLogo from "../../../assets/images/mastercard-logo.webp";
 import { Networks } from "../../../constants/card";
 import "./CardDetail.css";
 
-import { type Transaction, type TransactionsResponse } from "../../../types/transaction";
+import { type Transaction } from "../../../types/transaction";
 import { routes } from "../../../app/navigation";
 import { formatDateStringToIT } from "../../../utils/date";
 import { directionConfigs } from "../../../constants/transactions";
 import { type CardSettings } from "../../../types/card";
 import { ServiceError } from "../../feeback/ServiceError";
-import type { RequestStatus } from "../../../types/request";
-import { RequestStatuses } from "../../../constants/request";
+import { useCardTransactions } from "../../../hooks/api/useCardTransactions";
+import { useCardSettings } from "../../../hooks/api/useCardSettings";
 
 function LoadingDetailsData({ size }: { size: number }) {
   return Array.from({ length: size }, (_, index) => (
@@ -27,18 +27,20 @@ function LoadingDetailsData({ size }: { size: number }) {
 
 function Transactions({
   transactions,
-  transactionsStatus,
+  isLoading,
+  isError,
   retry,
 }: {
   transactions: Transaction[] | undefined;
-  transactionsStatus: RequestStatus;
-  retry: () => Promise<void>;
+  isLoading: boolean;
+  isError: boolean;
+  retry: () => void;
 }) {
-  if (transactionsStatus === RequestStatuses.LOADING) {
+  if (isLoading) {
     return <LoadingDetailsData size={5} />;
   }
 
-  if (transactionsStatus === RequestStatuses.ERROR) {
+  if (isError) {
     return (
       <ServiceError message="Non è stato possibile recuperare le transazioni." onRetry={retry} />
     );
@@ -86,23 +88,25 @@ function Transactions({
 
 function Settings({
   settings,
-  settingsStatus,
+  isLoading,
+  isError,
   retry,
   updateSetting,
 }: {
   settings: CardSettings | undefined;
-  settingsStatus: RequestStatus;
-  retry: () => Promise<void>;
+  isLoading: boolean;
+  isError: boolean;
+  retry: () => void;
   updateSetting: <Setting extends keyof CardSettings>(
     key: Setting,
     value: CardSettings[Setting],
   ) => void;
 }) {
-  if (settingsStatus === RequestStatuses.LOADING) {
+  if (isLoading) {
     return <LoadingDetailsData size={4} />;
   }
 
-  if (settingsStatus === RequestStatuses.ERROR) {
+  if (isError) {
     return (
       <ServiceError
         message="Non è stato possibile recuperare le impostazioni della carta."
@@ -194,10 +198,21 @@ function Settings({
 }
 
 export function CardDetail({ card }: { card: Card }) {
-  const [transactionsData, setTransactionData] = useState<TransactionsResponse>();
-  const [transactionsStatus, setTransactionsStatus] = useState<RequestStatus>(RequestStatuses.IDLE);
-  const [settings, setSettings] = useState<CardSettings>();
-  const [settingsStatus, setSettingsStatus] = useState<RequestStatus>(RequestStatuses.IDLE);
+  const [newSettings, setNewSettings] = useState<CardSettings>();
+
+  const {
+    data: transactionsData,
+    isLoading: transactionsLoading,
+    isError: transactionsError,
+    refetch: retryTransactions,
+  } = useCardTransactions(card.cardId);
+
+  const {
+    data: settings,
+    isLoading: settingsLoading,
+    isError: settingsError,
+    refetch: retrySettings,
+  } = useCardSettings(card.cardId);
 
   function updateSetting<Setting extends keyof CardSettings>(
     key: Setting,
@@ -207,13 +222,13 @@ export function CardDetail({ card }: { card: Card }) {
       return;
     }
 
-    setSettings({
+    setNewSettings({
       ...settings,
       [key]: value,
     });
   }
 
-  async function getTransactions() {
+  /*  async function getTransactions() {
     setTransactionsStatus(RequestStatuses.LOADING);
 
     try {
@@ -230,9 +245,9 @@ export function CardDetail({ card }: { card: Card }) {
     } catch (error) {
       setTransactionsStatus(RequestStatuses.ERROR);
     }
-  }
+  } */
 
-  async function getSettings() {
+  /*   async function getSettings() {
     setSettingsStatus(RequestStatuses.LOADING);
 
     try {
@@ -249,12 +264,12 @@ export function CardDetail({ card }: { card: Card }) {
     } catch (error) {
       setSettingsStatus(RequestStatuses.ERROR);
     }
-  }
+  } */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     getTransactions();
     getSettings();
-  }, [card.cardId]);
+  }, [card.cardId]); */
 
   return (
     <div className="detail">
@@ -279,8 +294,9 @@ export function CardDetail({ card }: { card: Card }) {
         <div className="detail__section-title">Ultime transazioni</div>
         <Transactions
           transactions={transactionsData?.transactions}
-          transactionsStatus={transactionsStatus}
-          retry={getTransactions}
+          isLoading={transactionsLoading}
+          isError={transactionsError}
+          retry={retryTransactions}
         />
       </section>
 
@@ -288,8 +304,9 @@ export function CardDetail({ card }: { card: Card }) {
         <div className="detail__section-title">Azioni</div>
         <Settings
           settings={settings}
-          settingsStatus={settingsStatus}
-          retry={getSettings}
+          isLoading={settingsLoading}
+          isError={settingsError}
+          retry={retrySettings}
           updateSetting={updateSetting}
         />
       </section>
