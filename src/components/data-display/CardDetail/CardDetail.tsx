@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Slider, Switch, Button, Skeleton } from "@mantine/core";
+import { Controller } from "react-hook-form";
 import { type Card } from "../../../types/card";
 import visaLogo from "../../../assets/images/visa-logo.webp";
 import mastercardLogo from "../../../assets/images/mastercard-logo.webp";
@@ -12,9 +13,15 @@ import { routes } from "../../../app/navigation";
 import { formatDateStringToIT } from "../../../utils/date";
 import { directionConfigs } from "../../../constants/transactions";
 import { type CardSettings } from "../../../types/card";
-import { ServiceError } from "../../feeback/ServiceError";
+import { ServiceError } from "../../feeback/ServiceError/ServiceError";
 import { useCardTransactions } from "../../../hooks/api/useCardTransactions";
 import { useCardSettings } from "../../../hooks/api/useCardSettings";
+import { ServiceEmpty } from "../../feeback/ServiceEmpty/ServiceEmpty";
+
+import { useForm, type UseFormReturn } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { cardSettingsSchema, type CardSettingsForm } from "../../../schemas/cardSettings.schema";
+import { useUpdateCardSettings } from "../../../hooks/api/useUpdateCardSettings";
 
 function LoadingDetailsData({ size }: { size: number }) {
   return Array.from({ length: size }, (_, index) => (
@@ -51,7 +58,7 @@ function Transactions({
   }
 
   if (transactions.length === 0) {
-    return <div className="detail__empty">Non ci sono ancora transazioni su questa carta.</div>;
+    return <ServiceEmpty message="Non ci sono ancora transazioni associate a questa carta." />;
   }
 
   return (
@@ -91,16 +98,13 @@ function Settings({
   isLoading,
   isError,
   retry,
-  updateSetting,
+  form,
 }: {
   settings: CardSettings | undefined;
   isLoading: boolean;
   isError: boolean;
   retry: () => void;
-  updateSetting: <Setting extends keyof CardSettings>(
-    key: Setting,
-    value: CardSettings[Setting],
-  ) => void;
+  form: UseFormReturn<CardSettingsForm>;
 }) {
   if (isLoading) {
     return <LoadingDetailsData size={4} />;
@@ -119,6 +123,13 @@ function Settings({
     return null;
   }
 
+  const dailyLimitEnabled = form.watch("dailyLimitEnabled");
+  const dailyLimit = form.watch("dailyLimit");
+
+  const { errors } = form.formState;
+
+  console.log(errors);
+
   return (
     <div className="detail__actions-list">
       <div className="detail__section-item">
@@ -129,9 +140,15 @@ function Settings({
           </div>
         </div>
 
-        <Switch
-          checked={settings.cardBlocked}
-          onChange={(event) => updateSetting("cardBlocked", event.currentTarget.checked)}
+        <Controller
+          name="cardBlocked"
+          control={form.control}
+          render={({ field }) => (
+            <Switch
+              checked={field.value}
+              onChange={(event) => field.onChange(event.currentTarget.checked)}
+            />
+          )}
         />
       </div>
 
@@ -140,10 +157,15 @@ function Settings({
           <div className="detail__section-main-text">Pagamenti contactless</div>
           <div className="detail__section-secondary-text">Abilita i pagamenti contactless</div>
         </div>
-
-        <Switch
-          checked={settings.contactlessEnabled}
-          onChange={(event) => updateSetting("contactlessEnabled", event.currentTarget.checked)}
+        <Controller
+          name="contactlessEnabled"
+          control={form.control}
+          render={({ field }) => (
+            <Switch
+              checked={field.value}
+              onChange={(event) => field.onChange(event.currentTarget.checked)}
+            />
+          )}
         />
       </div>
 
@@ -153,9 +175,15 @@ function Settings({
           <div className="detail__section-secondary-text">Abilita i pagamenti online</div>
         </div>
 
-        <Switch
-          checked={settings.onlinePaymentsEnabled}
-          onChange={(event) => updateSetting("onlinePaymentsEnabled", event.currentTarget.checked)}
+        <Controller
+          name="onlinePaymentsEnabled"
+          control={form.control}
+          render={({ field }) => (
+            <Switch
+              checked={field.value}
+              onChange={(event) => field.onChange(event.currentTarget.checked)}
+            />
+          )}
         />
       </div>
 
@@ -167,29 +195,43 @@ function Settings({
               Imposta un limite massimo per i pagamenti giornalieri
             </div>
           </div>
-
-          <Switch
-            checked={settings.dailyLimitEnabled}
-            onChange={(event) => updateSetting("dailyLimitEnabled", event.currentTarget.checked)}
+          <Controller
+            name="dailyLimitEnabled"
+            control={form.control}
+            render={({ field }) => (
+              <Switch
+                checked={field.value}
+                onChange={(event) => field.onChange(event.currentTarget.checked)}
+              />
+            )}
           />
         </div>
 
-        {settings.dailyLimitEnabled && (
+        {dailyLimitEnabled && (
           <div className="detail__limit">
-            <div className="detail__limit-value">{settings.dailyLimit} €</div>
+            <div className="detail__limit-value">{dailyLimit} €</div>
 
-            <Slider
-              min={50}
-              max={5000}
-              step={50}
-              value={settings.dailyLimit}
-              onChange={(value) => updateSetting("dailyLimit", value)}
+            <Controller
+              name="dailyLimit"
+              control={form.control}
+              render={({ field }) => (
+                <Slider
+                  min={10}
+                  max={5000}
+                  step={50}
+                  value={field.value}
+                  onChange={field.onChange}
+                />
+              )}
             />
-
             <div className="detail__limit-range">
               <span>50 €</span>
               <span>5.000 €</span>
             </div>
+
+            {errors.dailyLimit && (
+              <div className="detail__limits-error">{errors.dailyLimit.message}</div>
+            )}
           </div>
         )}
       </div>
@@ -198,8 +240,6 @@ function Settings({
 }
 
 export function CardDetail({ card }: { card: Card }) {
-  const [newSettings, setNewSettings] = useState<CardSettings>();
-
   const {
     data: transactionsData,
     isLoading: transactionsLoading,
@@ -214,62 +254,39 @@ export function CardDetail({ card }: { card: Card }) {
     refetch: retrySettings,
   } = useCardSettings(card.cardId);
 
-  function updateSetting<Setting extends keyof CardSettings>(
-    key: Setting,
-    value: CardSettings[Setting],
-  ) {
+  const {
+    mutateAsync: updateSettings,
+    isPending: isUpdating,
+    isError: updateError,
+  } = useUpdateCardSettings();
+
+  const form = useForm<CardSettingsForm>({
+    resolver: zodResolver(cardSettingsSchema),
+  });
+
+  async function onSubmit(values: CardSettingsForm) {
+    console.log(values);
+    const updatedSettings = await updateSettings({
+      cardId: card.cardId,
+      settings: values,
+    });
+
+    form.reset(updatedSettings);
+  }
+
+  useEffect(() => {
     if (!settings) {
       return;
     }
 
-    setNewSettings({
-      ...settings,
-      [key]: value,
+    form.reset({
+      cardBlocked: settings.cardBlocked,
+      contactlessEnabled: settings.contactlessEnabled,
+      onlinePaymentsEnabled: settings.onlinePaymentsEnabled,
+      dailyLimitEnabled: settings.dailyLimitEnabled,
+      dailyLimit: settings.dailyLimit,
     });
-  }
-
-  /*  async function getTransactions() {
-    setTransactionsStatus(RequestStatuses.LOADING);
-
-    try {
-      const response = await fetch(`/api/transactions/${card.cardId}?limit=5`);
-
-      if (!response.ok) {
-        throw new Error(`Failed to fetch transactions: ${response.status}`);
-      }
-
-      const result = await response.json();
-
-      setTransactionData(result);
-      setTransactionsStatus(RequestStatuses.SUCCESS);
-    } catch (error) {
-      setTransactionsStatus(RequestStatuses.ERROR);
-    }
-  } */
-
-  /*   async function getSettings() {
-    setSettingsStatus(RequestStatuses.LOADING);
-
-    try {
-      const response = await fetch(`/api/settings/${card.cardId}`);
-
-      if (!response.ok) {
-        throw new Error(`Failed to fetch settings: ${response.status}`);
-      }
-
-      const result = await response.json();
-
-      setSettings(result);
-      setSettingsStatus(RequestStatuses.SUCCESS);
-    } catch (error) {
-      setSettingsStatus(RequestStatuses.ERROR);
-    }
-  } */
-
-  /*   useEffect(() => {
-    getTransactions();
-    getSettings();
-  }, [card.cardId]); */
+  }, [settings, form]);
 
   return (
     <div className="detail">
@@ -302,17 +319,29 @@ export function CardDetail({ card }: { card: Card }) {
 
       <section className="detail__actions">
         <div className="detail__section-title">Azioni</div>
-        <Settings
-          settings={settings}
-          isLoading={settingsLoading}
-          isError={settingsError}
-          retry={retrySettings}
-          updateSetting={updateSetting}
-        />
+        <form onSubmit={form.handleSubmit(onSubmit)} className="detail">
+          <Settings
+            settings={settings}
+            isLoading={settingsLoading}
+            isError={settingsError}
+            retry={retrySettings}
+            form={form}
+          />
+
+          {updateError && <ServiceError message="Non è stato possibile salvare le modifiche." />}
+
+          <div className="detail__actions-submit">
+            <Button
+              type="submit"
+              variant="filled"
+              disabled={!form.formState.isDirty || Object.keys(form.formState.errors).length > 0}
+              loading={isUpdating}
+            >
+              {updateError ? "Riprova" : "Salve modifiche"}
+            </Button>
+          </div>
+        </form>
       </section>
-      <div className="detail__actions-submit">
-        <Button variant="filled">Salve modifiche</Button>
-      </div>
     </div>
   );
 }

@@ -120,6 +120,12 @@
   font-size: 0.75rem;
 }
 
+.detail__limits-error {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--app-danger);
+}
+
 .detail__actions-submit {
   margin: 1rem 0;
   display: flex;

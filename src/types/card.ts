@@ -44,6 +44,14 @@ export interface CardSettings {
   dailyLimit: number;
 }
 
+export type CardSettingsForm = {
+  cardBlocked: boolean;
+  contactlessEnabled: boolean;
+  onlinePaymentsEnabled: boolean;
+  dailyLimitEnabled: boolean;
+  dailyLimit: number;
+};
+
 export type CardsParams = {
   page: number;
   limit: number;

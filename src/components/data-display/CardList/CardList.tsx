@@ -11,7 +11,8 @@ import { routes } from "../../../app/navigation";
 import { CardNetworkLogo } from "../CardNetworkLogo/CardNetworkLogo";
 import { StatusItem } from "../StatusItem/StatusItem";
 import { CardDetail } from "../CardDetail/CardDetail";
-import { ServiceError } from "../../feeback/ServiceError";
+import { ServiceError } from "../../feeback/ServiceError/ServiceError";
+import { ServiceEmpty } from "../../feeback/ServiceEmpty/ServiceEmpty";
 
 export function CardList({
   data,
@@ -47,6 +48,15 @@ export function CardList({
 
   if (responseError) {
     return <ServiceError message="Non è stato possibile recuperare la lista Carte." withIcon />;
+  }
+
+  if (data.length === 0) {
+    return (
+      <ServiceEmpty
+        message="Non sono state trovate carte che corrispondono ai criteri selezionati."
+        withIcon
+      />
+    );
   }
 
   return (
