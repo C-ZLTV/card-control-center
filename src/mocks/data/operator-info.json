@@ -1,0 +1,25 @@
+{
+  "id": "OP-847392",
+  "firstName": "Raffaele",
+  "lastName": "Ferrari",
+  "email": "raffaele.ferrari@bank.it",
+  "role": "Senior Banking Operator",
+  "branch": {
+    "code": "MI-042",
+    "name": "Milano Centro",
+    "city": "Milano"
+  },
+  "department": "Card Management",
+  "employeeNumber": "EMP-10482",
+  "phoneExtension": "2847",
+  "locale": "it-IT",
+  "timezone": "Europe/Rome",
+  "permissions": [
+    "cards:read",
+    "cards:update",
+    "cards:block",
+    "cards:unblock",
+    "transactions:read"
+  ],
+  "lastLogin": "2026-08-26T08:42:00+02:00"
+}

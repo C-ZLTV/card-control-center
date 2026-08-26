@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./App.css";
 
 import { MantineProvider } from "@mantine/core";
@@ -9,13 +10,31 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./app/router.tsx";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useOperatorInfo } from "./hooks/api/useOperatorInfo.ts";
+import { useOperatorStore } from "./store/operatorStore.ts";
+
+const queryClient = new QueryClient();
+
+function OperatorInitializer() {
+  const { data: operator } = useOperatorInfo();
+
+  const setOperator = useOperatorStore((state) => state.setOperator);
+
+  useEffect(() => {
+    if (operator) {
+      setOperator(operator);
+    }
+  }, [operator, setOperator]);
+
+  return null;
+}
 
 function App() {
-  const queryClient = new QueryClient();
-
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider theme={theme} cssVariablesResolver={resolver} defaultColorScheme="dark">
+        <OperatorInitializer />
+
         <RouterProvider router={router} />
       </MantineProvider>
     </QueryClientProvider>
