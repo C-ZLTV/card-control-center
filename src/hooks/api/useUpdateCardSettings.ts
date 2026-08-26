@@ -14,6 +14,9 @@ export function useUpdateCardSettings() {
       queryClient.invalidateQueries({
         queryKey: ["cardSettings", variables.cardId],
       });
+      queryClient.invalidateQueries({
+        queryKey: ["cards"],
+      });
     },
   });
 }

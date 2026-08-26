@@ -28,7 +28,7 @@ export function DashboardPage() {
 
   const limit = 10;
 
-  const { data, isLoading, isError, refetch } = useCards({
+  const { data, isLoading, isError } = useCards({
     page,
     limit,
     filters: appliedFilters,
@@ -60,56 +60,9 @@ export function DashboardPage() {
     }
   }
 
-  function buildQueryParams(
-    filters: CardFilters & {
-      limit: number;
-      offset: number;
-    },
-  ): string {
-    const params = Object.entries(filters)
-      .filter(([, value]) => value !== "")
-      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
-      .join("&");
-
-    return params ? `?${params}` : "";
-  }
-
-  /*   async function getData(page: number, filters: CardFilters) {
-    setDataStatus(RequestStatuses.LOADING);
-
-    try {
-      const offset = (page - 1) * limit;
-
-      const queryParams = buildQueryParams({
-        ...filters,
-        limit: limit,
-        offset: offset,
-      });
-
-      const response = await fetch(`/api/cards${queryParams}`);
-
-      if (!response.ok) {
-        setDataStatus(RequestStatuses.ERROR);
-        throw new Error(`Failed to fetch cards: ${response.status}`);
-      }
-
-      const result = await response.json();
-
-      setData(result.cards);
-      setTotal(result.total);
-
-      setDataStatus(RequestStatuses.SUCCESS);
-    } catch (error) {
-      console.error("Error fetching cards:", error);
-      setData([]);
-      setTotal(0);
-    }
-  }
- */
   function handleSearch() {
     setPage(1);
     setAppliedFilters(filters);
-    // getData(page, filters);
   }
 
   function handleClearFilters() {
@@ -117,16 +70,6 @@ export function DashboardPage() {
     setAppliedFilters(baseFilters);
     setPage(1);
   }
-
-  /*   function handlePagigation(page: number) {
-    console.log(page);
-    setPage(page);
-    getData(page, filters);
-  }
- */
-  /*   useEffect(() => {
-    getData(page, filters);
-  }, []); */
 
   return (
     <>

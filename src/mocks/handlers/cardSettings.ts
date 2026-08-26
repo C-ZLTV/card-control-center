@@ -1,6 +1,9 @@
 import { http, HttpResponse } from "msw";
 import settingsData from "../data/card-settings.json";
 import type { CardSettings, CardSettingsForm } from "../../types/card";
+import cardData from "../data/card-list.json";
+
+const previousCardStatuses: Record<string, string> = {};
 
 export const cardSettingsHandlers = [
   http.get("/api/settings/:cardId", ({ params }) => {
@@ -20,6 +23,10 @@ export const cardSettingsHandlers = [
   http.patch("/api/settings/:cardId", async ({ params, request }) => {
     const { cardId } = params;
 
+    if (typeof cardId !== "string") {
+      return HttpResponse.json({ message: "Invalid cardId" }, { status: 400 });
+    }
+
     const updatedSettings = (await request.json()) as CardSettingsForm;
 
     const settingsIndex = settingsData.settings.findIndex(
@@ -37,8 +44,21 @@ export const cardSettingsHandlers = [
 
     settingsData.settings[settingsIndex] = updatedCardSettings;
 
-    //return HttpResponse.json(updatedCardSettings);
+    const cardIndex = cardData.cards.findIndex((card) => card.cardId === cardId);
 
-    return HttpResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    if (cardIndex !== -1) {
+      if (updatedSettings.cardBlocked) {
+        if (!previousCardStatuses[cardId]) {
+          previousCardStatuses[cardId] = cardData.cards[cardIndex].cardStatus;
+        }
+
+        cardData.cards[cardIndex].cardStatus = "blocked";
+      } else {
+        cardData.cards[cardIndex].cardStatus = previousCardStatuses[cardId] ?? "active";
+        delete previousCardStatuses[cardId];
+      }
+    }
+
+    return HttpResponse.json(updatedCardSettings);
   }),
 ];

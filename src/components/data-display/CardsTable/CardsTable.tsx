@@ -59,6 +59,7 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
     setCard(card);
     open();
   }
+
   if (responseError) {
     return <ServiceError message="Non è stato possibile recuperare la lista Carte." withIcon />;
   }
@@ -101,7 +102,7 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
       </div>
 
       <Modal opened={opened} onClose={close} title="Card Details">
-        {card && <CardDetail card={card} />}
+        {card && <CardDetail card={card} closeModal={close} />}
       </Modal>
     </>
   );

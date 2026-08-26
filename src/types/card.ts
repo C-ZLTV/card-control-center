@@ -52,6 +52,8 @@ export type CardSettingsForm = {
   dailyLimit: number;
 };
 
+export type CardSetting = keyof Omit<CardSettings, "cardId">;
+
 export type CardsParams = {
   page: number;
   limit: number;

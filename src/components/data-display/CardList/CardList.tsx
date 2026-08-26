@@ -89,7 +89,7 @@ export function CardList({
         );
       })}
       <Modal opened={opened} onClose={close} title="Card Details">
-        {card && <CardDetail card={card} />}
+        {card && <CardDetail card={card} closeModal={close} />}
       </Modal>
     </>
   );

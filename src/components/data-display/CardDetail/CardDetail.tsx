@@ -5,7 +5,7 @@ import { Controller } from "react-hook-form";
 import { type Card } from "../../../types/card";
 import visaLogo from "../../../assets/images/visa-logo.webp";
 import mastercardLogo from "../../../assets/images/mastercard-logo.webp";
-import { Networks } from "../../../constants/card";
+import { AllowedSettings, CardStatuses, Networks } from "../../../constants/card";
 import "./CardDetail.css";
 
 import { type Transaction } from "../../../types/transaction";
@@ -94,12 +94,14 @@ function Transactions({
 }
 
 function Settings({
+  allowedSettings,
   settings,
   isLoading,
   isError,
   retry,
   form,
 }: {
+  allowedSettings;
   settings: CardSettings | undefined;
   isLoading: boolean;
   isError: boolean;
@@ -128,8 +130,6 @@ function Settings({
 
   const { errors } = form.formState;
 
-  console.log(errors);
-
   return (
     <div className="detail__actions-list">
       <div className="detail__section-item">
@@ -145,6 +145,7 @@ function Settings({
           control={form.control}
           render={({ field }) => (
             <Switch
+              disabled={!allowedSettings.includes("cardBlocked")}
               checked={field.value}
               onChange={(event) => field.onChange(event.currentTarget.checked)}
             />
@@ -162,6 +163,7 @@ function Settings({
           control={form.control}
           render={({ field }) => (
             <Switch
+              disabled={!allowedSettings.includes("contactlessEnabled")}
               checked={field.value}
               onChange={(event) => field.onChange(event.currentTarget.checked)}
             />
@@ -180,6 +182,7 @@ function Settings({
           control={form.control}
           render={({ field }) => (
             <Switch
+              disabled={!allowedSettings.includes("onlinePaymentsEnabled")}
               checked={field.value}
               onChange={(event) => field.onChange(event.currentTarget.checked)}
             />
@@ -200,6 +203,7 @@ function Settings({
             control={form.control}
             render={({ field }) => (
               <Switch
+                disabled={!allowedSettings.includes("dailyLimitEnabled")}
                 checked={field.value}
                 onChange={(event) => field.onChange(event.currentTarget.checked)}
               />
@@ -220,6 +224,7 @@ function Settings({
                   max={5000}
                   step={50}
                   value={field.value}
+                  disabled={!allowedSettings.includes("dailyLimit")}
                   onChange={field.onChange}
                 />
               )}
@@ -239,7 +244,7 @@ function Settings({
   );
 }
 
-export function CardDetail({ card }: { card: Card }) {
+export function CardDetail({ card, closeModal }: { card: Card; closeModal: () => void }) {
   const {
     data: transactionsData,
     isLoading: transactionsLoading,
@@ -273,6 +278,18 @@ export function CardDetail({ card }: { card: Card }) {
 
     form.reset(updatedSettings);
   }
+
+  const cardBlocked = form.watch("cardBlocked");
+
+  let effectiveCardStatus = card.cardStatus;
+
+  if (cardBlocked) {
+    effectiveCardStatus = CardStatuses.BLOCKED;
+  } else if (card.cardStatus === CardStatuses.BLOCKED) {
+    effectiveCardStatus = CardStatuses.ACTIVE;
+  }
+
+  const allowedSettings = AllowedSettings[effectiveCardStatus];
 
   useEffect(() => {
     if (!settings) {
@@ -321,6 +338,7 @@ export function CardDetail({ card }: { card: Card }) {
         <div className="detail__section-title">Azioni</div>
         <form onSubmit={form.handleSubmit(onSubmit)} className="detail">
           <Settings
+            allowedSettings={allowedSettings}
             settings={settings}
             isLoading={settingsLoading}
             isError={settingsError}
@@ -336,6 +354,7 @@ export function CardDetail({ card }: { card: Card }) {
               variant="filled"
               disabled={!form.formState.isDirty || Object.keys(form.formState.errors).length > 0}
               loading={isUpdating}
+              onClick={closeModal}
             >
               {updateError ? "Riprova" : "Salve modifiche"}
             </Button>
