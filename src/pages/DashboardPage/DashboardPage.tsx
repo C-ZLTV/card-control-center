@@ -8,6 +8,7 @@ import { CardList } from "../../components/data-display/CardList/CardList";
 import { CardsTable } from "../../components/data-display/CardsTable/CardsTable";
 
 import { useCards } from "../../hooks/api/useCards";
+import { useMediaQuery } from "@mantine/hooks";
 
 export function DashboardPage() {
   const statusList: (CardStatus | "all")[] = ["all", ...Object.values(CardStatuses)];
@@ -19,7 +20,7 @@ export function DashboardPage() {
     endExpirationDate: "",
     startActivationDate: "",
     endActivationDate: "",
-    pan: "",
+    cardId: "",
   };
 
   const [page, setPage] = useState(1);
@@ -37,6 +38,8 @@ export function DashboardPage() {
   const cards = data?.cards ?? [];
 
   const totalPages = Math.ceil((data?.total ?? 0) / limit);
+
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   function updateFilter<Filter extends keyof CardFilters>(key: Filter, value: CardFilters[Filter]) {
     setFilters((current) => ({
@@ -77,10 +80,10 @@ export function DashboardPage() {
 
       <div className="dashboard__filters">
         <TextInput
-          label="PAN"
-          placeholder="PAN"
-          value={filters.pan}
-          onChange={(e) => updateFilter("pan", e.target.value)}
+          label="Card Id"
+          placeholder="Card Id"
+          value={filters.cardId}
+          onChange={(e) => updateFilter("cardId", e.target.value)}
         />
 
         <TextInput
@@ -125,13 +128,11 @@ export function DashboardPage() {
         </Button>
       </div>
 
-      <div className="dashboard__card-list">
+      {isMobile ? (
         <CardList data={cards} isLoading={isLoading} responseError={isError} />
-      </div>
-
-      <div className="dashboard__table">
+      ) : (
         <CardsTable data={cards} isLoading={isLoading} responseError={isError} />
-      </div>
+      )}
 
       <div className="dashboard__pagination">
         <Pagination total={totalPages} value={page} onChange={setPage} color="var(--app-primary)" />

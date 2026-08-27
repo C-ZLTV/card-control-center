@@ -63,12 +63,18 @@ export function CardList({
     <>
       {data.map((card: Card) => {
         return (
-          <CardComponent className="card" shadow="sm" padding="lg" withBorder>
+          <CardComponent
+            key={card.cardId.replace(/\D/g, "")}
+            className="card"
+            shadow="sm"
+            padding="lg"
+            withBorder
+          >
             <div className="card__header">
               <div>
                 <div>{card.customerName}</div>
                 <Link className="table__redirect-link" to={routes.TRANSACTIONS}>
-                  {card.last4}
+                  {card.cardId.replace(/\D/g, "")}
                 </Link>
               </div>
               <CardNetworkLogo cardNetwork={card.cardNetwork} />
@@ -88,7 +94,12 @@ export function CardList({
           </CardComponent>
         );
       })}
-      <Modal opened={opened} onClose={close} title="Card Details">
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="Card Details"
+        closeButtonProps={{ "aria-label": "Close" }}
+      >
         {card && <CardDetail card={card} closeModal={close} />}
       </Modal>
     </>

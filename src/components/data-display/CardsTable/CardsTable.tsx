@@ -26,29 +26,40 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
 
   const emptyRows = Array.from({ length: Math.max(0, PAGE_SIZE - data.length) }, (_, index) => (
     <Table.Tr key={`empty-${index}`}>
-      <Table.Td className="table__empty-cell" colSpan={7} />
+      <Table.Td className="table__empty-cell" colSpan={8} />
     </Table.Tr>
   ));
 
   const rows = data.map((element) => (
-    <Table.Tr key={element.last4}>
+    <Table.Tr key={element.cardId.replace(/\D/g, "")}>
       <Table.Td>
         <CardNetworkLogo cardNetwork={element.cardNetwork} />
       </Table.Td>
+
       <Table.Td>
         <Link className="table__redirect-link" to={routes.TRANSACTIONS}>
-          {element.last4}
+          {element.cardId.replace(/\D/g, "")}
         </Link>
       </Table.Td>
+
       <Table.Td>{element.customerName}</Table.Td>
+
       <Table.Td>{element.branchCode}</Table.Td>
+
       <Table.Td>
         <StatusItem status={element.cardStatus} />
       </Table.Td>
+
       <Table.Td>{element.activationDate}</Table.Td>
+
       <Table.Td>{element.expirationDate}</Table.Td>
+
       <Table.Td>
-        <ActionIcon onClick={() => onOpenDetail(element)} variant="outline">
+        <ActionIcon
+          aria-label="Open card details"
+          onClick={() => onOpenDetail(element)}
+          variant="outline"
+        >
           <Ellipsis />
         </ActionIcon>
       </Table.Td>
@@ -64,7 +75,7 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
     return <ServiceError message="Non è stato possibile recuperare la lista Carte." withIcon />;
   }
 
-  if (data.length === 0) {
+  if (!isLoading && data.length === 0) {
     return (
       <ServiceEmpty
         message="Non sono state trovate carte che corrispondono ai criteri selezionati."
@@ -77,18 +88,21 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
     <>
       <div className="table">
         {isLoading && <Loader className="table_loader" size="sm" />}
+
         <Table highlightOnHover highlightOnHoverColor="var(--app-surface)">
           <Table.Thead>
             <Table.Tr>
               <Table.Th>Network</Table.Th>
-              <Table.Th>PAN</Table.Th>
+              <Table.Th>Card Id</Table.Th>
               <Table.Th>Branch</Table.Th>
               <Table.Th>Customer</Table.Th>
               <Table.Th>Status</Table.Th>
               <Table.Th>Activation Date</Table.Th>
               <Table.Th>Expiration Date</Table.Th>
+              <Table.Th />
             </Table.Tr>
           </Table.Thead>
+
           <Table.Tbody
             style={{
               opacity: isLoading ? 0.4 : 1,
@@ -101,7 +115,12 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
         </Table>
       </div>
 
-      <Modal opened={opened} onClose={close} title="Card Details">
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="Card Details"
+        closeButtonProps={{ "aria-label": "Close" }}
+      >
         {card && <CardDetail card={card} closeModal={close} />}
       </Modal>
     </>

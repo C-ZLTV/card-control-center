@@ -4,6 +4,8 @@ import type { Card } from "../../types/card";
 
 export const cardHandlers = [
   http.get("/api/cards", ({ request }) => {
+    console.log("MSW /api/cards", request.url);
+
     const url = new URL(request.url);
 
     const limit = Number(url.searchParams.get("limit") ?? 10);
@@ -15,18 +17,18 @@ export const cardHandlers = [
     const endExpirationDate = url.searchParams.get("endExpirationDate");
     const startActivationDate = url.searchParams.get("startActivationDate");
     const endActivationDate = url.searchParams.get("endActivationDate");
-    const pan = url.searchParams.get("pan");
+    const cardId = url.searchParams.get("cardId");
 
     let cards = cardData.cards as Card[];
 
     if (branchCode) {
-      cards = cards.filter((card) => card.branchCode === branchCode);
+      cards = cards.filter((card) => card.branchCode.includes(branchCode));
     }
     if (status && status !== "all") {
       cards = cards.filter((card) => card.cardStatus === status);
     }
-    if (pan) {
-      cards = cards.filter((card) => card.last4.includes(pan));
+    if (cardId) {
+      cards = cards.filter((card) => card.cardId.includes(cardId));
     }
     if (startExpirationDate) {
       cards = cards.filter((card) => card.expirationDate >= startExpirationDate);

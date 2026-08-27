@@ -1,17 +1,32 @@
 import { http, HttpResponse } from "msw";
+
 import settingsData from "../data/card-settings.json";
-import type { CardSettings, CardSettingsForm } from "../../types/card";
 import cardData from "../data/card-list.json";
 
+import type { CardSettings, CardSettingsForm } from "../../types/card";
+
+const initialSettings = structuredClone(settingsData.settings);
+const initialCards = structuredClone(cardData.cards);
+
+let currentSettings = structuredClone(initialSettings);
+
 const previousCardStatuses: Record<string, string> = {};
+
+export function resetCardSettingsMock() {
+  currentSettings = structuredClone(initialSettings);
+
+  cardData.cards.splice(0, cardData.cards.length, ...structuredClone(initialCards));
+
+  Object.keys(previousCardStatuses).forEach((cardId) => {
+    delete previousCardStatuses[cardId];
+  });
+}
 
 export const cardSettingsHandlers = [
   http.get("/api/settings/:cardId", ({ params }) => {
     const { cardId } = params;
 
-    const settings = settingsData.settings.find(
-      (setting: CardSettings) => setting.cardId === cardId,
-    );
+    const settings = currentSettings.find((setting: CardSettings) => setting.cardId === cardId);
 
     if (!settings) {
       return HttpResponse.json({ message: "Card settings not found in GET" }, { status: 404 });
@@ -29,7 +44,7 @@ export const cardSettingsHandlers = [
 
     const updatedSettings = (await request.json()) as CardSettingsForm;
 
-    const settingsIndex = settingsData.settings.findIndex(
+    const settingsIndex = currentSettings.findIndex(
       (setting: CardSettings) => setting.cardId === cardId,
     );
 
@@ -38,11 +53,11 @@ export const cardSettingsHandlers = [
     }
 
     const updatedCardSettings: CardSettings = {
-      ...settingsData.settings[settingsIndex],
+      ...currentSettings[settingsIndex],
       ...updatedSettings,
     };
 
-    settingsData.settings[settingsIndex] = updatedCardSettings;
+    currentSettings[settingsIndex] = updatedCardSettings;
 
     const cardIndex = cardData.cards.findIndex((card) => card.cardId === cardId);
 
@@ -55,6 +70,7 @@ export const cardSettingsHandlers = [
         cardData.cards[cardIndex].cardStatus = "blocked";
       } else {
         cardData.cards[cardIndex].cardStatus = previousCardStatuses[cardId] ?? "active";
+
         delete previousCardStatuses[cardId];
       }
     }

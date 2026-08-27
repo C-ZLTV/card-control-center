@@ -32,7 +32,7 @@ export type CardFilters = {
   endExpirationDate?: string;
   startActivationDate?: string;
   endActivationDate?: string;
-  pan?: string;
+  cardId?: string;
 };
 
 export interface CardSettings {

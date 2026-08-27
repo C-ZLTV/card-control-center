@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Slider, Switch, Button, Skeleton } from "@mantine/core";
 import { Controller } from "react-hook-form";
-import { type Card } from "../../../types/card";
+
+import { type Card, type CardSettings } from "../../../types/card";
 import visaLogo from "../../../assets/images/visa-logo.webp";
 import mastercardLogo from "../../../assets/images/mastercard-logo.webp";
 import { AllowedSettings, CardStatuses, Networks } from "../../../constants/card";
@@ -12,11 +13,10 @@ import { type Transaction } from "../../../types/transaction";
 import { routes } from "../../../app/navigation";
 import { formatDateStringToIT } from "../../../utils/date";
 import { directionConfigs } from "../../../constants/transactions";
-import { type CardSettings } from "../../../types/card";
 import { ServiceError } from "../../feeback/ServiceError/ServiceError";
+import { ServiceEmpty } from "../../feeback/ServiceEmpty/ServiceEmpty";
 import { useCardTransactions } from "../../../hooks/api/useCardTransactions";
 import { useCardSettings } from "../../../hooks/api/useCardSettings";
-import { ServiceEmpty } from "../../feeback/ServiceEmpty/ServiceEmpty";
 
 import { useForm, type UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -37,11 +37,13 @@ function Transactions({
   isLoading,
   isError,
   retry,
+  cardId,
 }: {
   transactions: Transaction[] | undefined;
   isLoading: boolean;
   isError: boolean;
   retry: () => void;
+  cardId: string;
 }) {
   if (isLoading) {
     return <LoadingDetailsData size={5} />;
@@ -86,7 +88,7 @@ function Transactions({
         </div>
       ))}
 
-      <Link className="detail__transactions-link" to={routes.TRANSACTIONS}>
+      <Link className="detail__transactions-link" to={`${routes.TRANSACTIONS}?cardId=${cardId}`}>
         Vai alla lista completa di Transazioni
       </Link>
     </>
@@ -101,7 +103,7 @@ function Settings({
   retry,
   form,
 }: {
-  allowedSettings;
+  allowedSettings: string[];
   settings: CardSettings | undefined;
   isLoading: boolean;
   isError: boolean;
@@ -135,6 +137,7 @@ function Settings({
       <div className="detail__section-item">
         <div>
           <div className="detail__section-main-text">Blocca carta</div>
+
           <div className="detail__section-secondary-text">
             Impedisci temporaneamente qualsiasi utilizzo della carta
           </div>
@@ -156,8 +159,10 @@ function Settings({
       <div className="detail__section-item">
         <div>
           <div className="detail__section-main-text">Pagamenti contactless</div>
+
           <div className="detail__section-secondary-text">Abilita i pagamenti contactless</div>
         </div>
+
         <Controller
           name="contactlessEnabled"
           control={form.control}
@@ -174,6 +179,7 @@ function Settings({
       <div className="detail__section-item">
         <div>
           <div className="detail__section-main-text">Pagamenti online</div>
+
           <div className="detail__section-secondary-text">Abilita i pagamenti online</div>
         </div>
 
@@ -194,10 +200,12 @@ function Settings({
         <div className="detail__section-item">
           <div>
             <div className="detail__section-main-text">Limite giornaliero</div>
+
             <div className="detail__section-secondary-text">
               Imposta un limite massimo per i pagamenti giornalieri
             </div>
           </div>
+
           <Controller
             name="dailyLimitEnabled"
             control={form.control}
@@ -229,6 +237,7 @@ function Settings({
                 />
               )}
             />
+
             <div className="detail__limit-range">
               <span>50 €</span>
               <span>5.000 €</span>
@@ -270,13 +279,17 @@ export function CardDetail({ card, closeModal }: { card: Card; closeModal: () =>
   });
 
   async function onSubmit(values: CardSettingsForm) {
-    console.log(values);
-    const updatedSettings = await updateSettings({
-      cardId: card.cardId,
-      settings: values,
-    });
+    try {
+      const updatedSettings = await updateSettings({
+        cardId: card.cardId,
+        settings: values,
+      });
 
-    form.reset(updatedSettings);
+      form.reset(updatedSettings);
+      closeModal();
+    } catch {
+      // The error is handled by the mutation state.
+    }
   }
 
   const cardBlocked = form.watch("cardBlocked");
@@ -309,12 +322,17 @@ export function CardDetail({ card, closeModal }: { card: Card; closeModal: () =>
     <div className="detail">
       <section className="detail__card">
         <div className="detail__card-contacless">Contacless</div>
+
         <div className="detail__pan">**** **** **** {card.last4}</div>
+
         <div className="detail__card-name">{card.customerName}</div>
+
         <div className="detail__card-exp">
           <div className="detail__card-exp-text">Scade</div>
+
           <div className="detail__card-exp-date">{formatDateStringToIT(card.expirationDate)}</div>
         </div>
+
         <div>
           {card.cardNetwork === Networks.MASTERCARD ? (
             <img className="detail__card-logo" src={mastercardLogo} alt="Mastercard" />
@@ -326,16 +344,19 @@ export function CardDetail({ card, closeModal }: { card: Card; closeModal: () =>
 
       <section className="detail__transactions">
         <div className="detail__section-title">Ultime transazioni</div>
+
         <Transactions
           transactions={transactionsData?.transactions}
           isLoading={transactionsLoading}
           isError={transactionsError}
           retry={retryTransactions}
+          cardId={card.cardId}
         />
       </section>
 
       <section className="detail__actions">
         <div className="detail__section-title">Azioni</div>
+
         <form onSubmit={form.handleSubmit(onSubmit)} className="detail">
           <Settings
             allowedSettings={allowedSettings}
@@ -354,7 +375,6 @@ export function CardDetail({ card, closeModal }: { card: Card; closeModal: () =>
               variant="filled"
               disabled={!form.formState.isDirty || Object.keys(form.formState.errors).length > 0}
               loading={isUpdating}
-              onClick={closeModal}
             >
               {updateError ? "Riprova" : "Salve modifiche"}
             </Button>
