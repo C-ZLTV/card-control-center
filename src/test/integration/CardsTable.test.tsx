@@ -79,7 +79,7 @@ describe("CardsTable", () => {
     renderWithQueryClient(<CardsTable data={cards} isLoading={false} responseError={false} />);
 
     const detailsButtons = screen.getAllByRole("button", {
-      name: "Open card details",
+      name: "Apri dettagli carta",
     });
 
     await user.click(detailsButtons[0]);
@@ -99,7 +99,7 @@ describe("CardsTable", () => {
     renderWithQueryClient(<CardsTable data={cards} isLoading={false} responseError={false} />);
 
     const detailsButtons = screen.getAllByRole("button", {
-      name: "Open card details",
+      name: "Apri dettagli carta",
     });
 
     await user.click(detailsButtons[0]);

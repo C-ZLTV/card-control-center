@@ -13,6 +13,7 @@ import { StatusItem } from "../StatusItem/StatusItem";
 import { CardDetail } from "../CardDetail/CardDetail";
 import { ServiceError } from "../../feeback/ServiceError/ServiceError";
 import { ServiceEmpty } from "../../feeback/ServiceEmpty/ServiceEmpty";
+import { formatDateStringToIT } from "../../../utils/date";
 
 export function CardList({
   data,
@@ -85,11 +86,11 @@ export function CardList({
               <div>Status: </div>
               <StatusItem status={card.cardStatus} />
             </div>
-            <div>Activation date: {card.activationDate}</div>
-            <div>Expiration date: {card.expirationDate}</div>
+            <div>Data attivazione: {formatDateStringToIT(card.activationDate)}</div>
+            <div>Data scadenza: {formatDateStringToIT(card.expirationDate)}</div>
 
             <Button mt="md" variant="outline" onClick={() => onOpenDetail(card)}>
-              Details
+              Dettagli
             </Button>
           </CardComponent>
         );
@@ -97,7 +98,7 @@ export function CardList({
       <Modal
         opened={opened}
         onClose={close}
-        title="Card Details"
+        title="Dettagli Carta"
         closeButtonProps={{ "aria-label": "Close" }}
       >
         {card && <CardDetail card={card} closeModal={close} />}

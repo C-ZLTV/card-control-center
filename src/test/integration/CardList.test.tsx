@@ -47,10 +47,10 @@ describe("CardList", () => {
     expect(screen.getByText("Branch code: MI001")).toBeInTheDocument();
     expect(screen.getByText("Branch code: RM014")).toBeInTheDocument();
 
-    expect(screen.getByText("Activation date: 2024-03-15")).toBeInTheDocument();
-    expect(screen.getByText("Expiration date: 2028-03-31")).toBeInTheDocument();
+    expect(screen.getByText("Data attivazione: 15/03/2024")).toBeInTheDocument();
+    expect(screen.getByText("Data scadenza: 31/03/2028")).toBeInTheDocument();
 
-    expect(screen.getAllByRole("button", { name: "Details" })).toHaveLength(2);
+    expect(screen.getAllByRole("button", { name: "Dettagli" })).toHaveLength(2);
   });
 
   it("renders loading skeletons", () => {
@@ -85,7 +85,7 @@ describe("CardList", () => {
     renderWithQueryClient(<CardList data={mockCards} isLoading={false} responseError={false} />);
 
     const detailsButtons = screen.getAllByRole("button", {
-      name: "Details",
+      name: "Dettagli",
     });
 
     await user.click(detailsButtons[0]);
@@ -104,10 +104,10 @@ describe("CardList", () => {
 
     renderWithQueryClient(<CardList data={mockCards} isLoading={false} responseError={false} />);
 
-    await user.click(screen.getAllByRole("button", { name: "Details" })[0]);
+    await user.click(screen.getAllByRole("button", { name: "Dettagli" })[0]);
 
     await waitFor(() => {
-      expect(screen.getByText("Card Details")).toBeInTheDocument();
+      expect(screen.getByText("Dettagli Carta")).toBeInTheDocument();
     });
 
     const closeButton = screen.getByRole("button", {
@@ -117,7 +117,7 @@ describe("CardList", () => {
     await user.click(closeButton);
 
     await waitFor(() => {
-      expect(screen.queryByText("Card Details")).not.toBeInTheDocument();
+      expect(screen.queryByText("Dettagli Carta")).not.toBeInTheDocument();
     });
   });
 });

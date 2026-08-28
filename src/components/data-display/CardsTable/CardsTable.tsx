@@ -56,7 +56,7 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
 
       <Table.Td>
         <ActionIcon
-          aria-label="Open card details"
+          aria-label="Apri dettagli carta"
           onClick={() => onOpenDetail(element)}
           variant="outline"
         >
@@ -92,13 +92,13 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
         <Table highlightOnHover highlightOnHoverColor="var(--app-surface)">
           <Table.Thead>
             <Table.Tr>
-              <Table.Th>Network</Table.Th>
-              <Table.Th>Card Id</Table.Th>
+              <Table.Th>Circuito</Table.Th>
+              <Table.Th>Carta</Table.Th>
               <Table.Th>Branch</Table.Th>
-              <Table.Th>Customer</Table.Th>
+              <Table.Th>Cliente</Table.Th>
               <Table.Th>Status</Table.Th>
-              <Table.Th>Activation Date</Table.Th>
-              <Table.Th>Expiration Date</Table.Th>
+              <Table.Th>Data Attivazione</Table.Th>
+              <Table.Th>Data Scadenza</Table.Th>
               <Table.Th />
             </Table.Tr>
           </Table.Thead>
@@ -118,7 +118,7 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
       <Modal
         opened={opened}
         onClose={close}
-        title="Card Details"
+        title="Dettagli Carta"
         closeButtonProps={{ "aria-label": "Close" }}
       >
         {card && <CardDetail card={card} closeModal={close} />}

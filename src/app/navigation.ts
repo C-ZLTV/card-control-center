@@ -24,56 +24,56 @@ export const routes = {
 
 export const routeMeta: RouteMeta[] = [
   {
-    label: "Dashboard",
+    label: "Lista carte",
     path: routes.DASHBOARD,
     icon: LayoutDashboard,
     category: "main",
   },
   {
-    label: "Clients",
+    label: "Clienti",
     path: routes.CLIENTS,
     icon: Users,
     category: "main",
   },
   {
-    label: "Branches",
+    label: "Filiali",
     path: routes.BRANCHES,
     icon: Building,
     category: "main",
   },
   {
-    label: "Requests",
+    label: "Richieste",
     path: routes.REQUESTS,
     icon: FileText,
     category: "main",
   },
   {
-    label: "Transactions",
+    label: "Transazioni",
     path: routes.TRANSACTIONS,
     icon: CreditCard,
     category: "main",
   },
   {
-    label: "Settings",
+    label: "Impostazioni",
     path: routes.SETTINGS,
     icon: Settings,
     category: "main",
   },
 
   {
-    label: "Documentation",
+    label: "Documentazione",
     path: routes.DOCUMENTATION,
     icon: File,
     category: "info",
   },
   {
-    label: "Contact support",
+    label: "Contacttaci",
     path: routes.CONTACTS,
     icon: Headset,
     category: "info",
   },
   {
-    label: "Operation Information",
+    label: "Operatore",
     path: routes.OPERATOR,
     category: "utility",
   },

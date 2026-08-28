@@ -20,18 +20,18 @@ export function WipPage() {
       </div>
 
       <div className="wip__content">
-        <span className="wip__label">WORK IN PROGRESS</span>
+        <span className="wip__label">LAVORI IN CORSO</span>
 
         <h1>
-          We&apos;re building
+          La sezione {pageLabel}
           <br />
-          {pageLabel} section for you
+          sarà disponibile a breve
         </h1>
 
         <p>
-          {`This section is currently under development. `}
+          {`Questa sezione è in fase di sviluppo. `}
           <br />
-          {"Check back soon for something new."}
+          {"Torna fra poco per poterla visualilzzare."}
         </p>
 
         <Button
@@ -40,7 +40,7 @@ export function WipPage() {
           leftSection={<ArrowLeft size={16} />}
           variant="filled"
         >
-          Back to Dashboard
+          Torna sulla Lista Carta
         </Button>
       </div>
     </section>

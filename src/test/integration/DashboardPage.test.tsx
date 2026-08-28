@@ -9,7 +9,7 @@ describe("DashboardPage", () => {
   it("loads and displays cards", async () => {
     renderWithQueryClient(<DashboardPage />);
 
-    expect(screen.getByText("Dashboard")).toBeInTheDocument();
+    expect(screen.getByText("Lista carte")).toBeInTheDocument();
 
     await waitFor(() => {
       expect(screen.getByText("84739261501")).toBeInTheDocument();

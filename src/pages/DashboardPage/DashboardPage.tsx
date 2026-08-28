@@ -76,19 +76,19 @@ export function DashboardPage() {
 
   return (
     <>
-      <h1 className="title">Dashboard</h1>
+      <h1 className="title">Lista carte</h1>
 
       <div className="dashboard__filters">
         <TextInput
-          label="Card Id"
-          placeholder="Card Id"
+          label="Carta"
+          placeholder="Carta"
           value={filters.cardId}
           onChange={(e) => updateFilter("cardId", e.target.value)}
         />
 
         <TextInput
-          label="Branch Code"
-          placeholder="Branch Code"
+          label="Codice Filiale"
+          placeholder="Codice Filiale"
           value={filters.branchCode}
           onChange={(e) => updateFilter("branchCode", e.target.value)}
         />
@@ -103,16 +103,16 @@ export function DashboardPage() {
 
         <DatePickerInput
           type="range"
-          label="Activation range"
-          placeholder="Activation range"
+          label="Range di Attivazione"
+          placeholder="Range di Attivazione"
           value={[filters.startActivationDate ?? null, filters.endActivationDate ?? null]}
           onChange={(value) => onDateChange(value, "Activation")}
         />
 
         <DatePickerInput
           type="range"
-          label="Expiration range"
-          placeholder="Expiration range"
+          label="Range di Scadenza"
+          placeholder="Range di Scadenza"
           value={[filters.startExpirationDate ?? null, filters.endExpirationDate ?? null]}
           onChange={(value) => onDateChange(value, "Expiration")}
         />
