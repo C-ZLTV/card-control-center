@@ -120,11 +120,11 @@ export function DashboardPage() {
 
       <div className="dashboard__filter-buttons">
         <Button variant="outline" onClick={handleClearFilters}>
-          Clear Filters
+          Pulisci Filtri
         </Button>
 
         <Button variant="filled" onClick={handleSearch}>
-          Search
+          Cerca
         </Button>
       </div>
 

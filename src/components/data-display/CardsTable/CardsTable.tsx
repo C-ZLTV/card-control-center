@@ -11,6 +11,7 @@ import { CardNetworkLogo } from "../CardNetworkLogo/CardNetworkLogo";
 import { CardDetail } from "../CardDetail/CardDetail";
 import { ServiceError } from "../../feeback/ServiceError/ServiceError";
 import { ServiceEmpty } from "../../feeback/ServiceEmpty/ServiceEmpty";
+import { formatDateStringToIT } from "../../../utils/date";
 
 type NavigationItemProps = {
   data: Card[];
@@ -50,9 +51,9 @@ export function CardsTable({ data, isLoading, responseError }: NavigationItemPro
         <StatusItem status={element.cardStatus} />
       </Table.Td>
 
-      <Table.Td>{element.activationDate}</Table.Td>
+      <Table.Td>{formatDateStringToIT(element.activationDate)}</Table.Td>
 
-      <Table.Td>{element.expirationDate}</Table.Td>
+      <Table.Td>{formatDateStringToIT(element.expirationDate)}</Table.Td>
 
       <Table.Td>
         <ActionIcon

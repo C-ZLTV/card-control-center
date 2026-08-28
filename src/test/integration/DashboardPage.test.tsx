@@ -40,7 +40,7 @@ describe("DashboardPage", () => {
 
     expect(statusSelect).toHaveValue("blocked");
 
-    await user.click(screen.getByRole("button", { name: "Search" }));
+    await user.click(screen.getByRole("button", { name: "Cerca" }));
 
     await waitFor(() => {
       expect(screen.queryByText("84739261501")).not.toBeInTheDocument();
@@ -71,13 +71,13 @@ describe("DashboardPage", () => {
 
     expect(statusSelect).toHaveValue("blocked");
 
-    await user.click(screen.getByRole("button", { name: "Search" }));
+    await user.click(screen.getByRole("button", { name: "Cerca" }));
 
     await waitFor(() => {
       expect(screen.queryByText("84739261501")).not.toBeInTheDocument();
     });
 
-    await user.click(screen.getByRole("button", { name: "Clear Filters" }));
+    await user.click(screen.getByRole("button", { name: "Pulisci Filtri" }));
 
     expect(statusSelect).toHaveValue("all");
 
