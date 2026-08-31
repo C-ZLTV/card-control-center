@@ -8,10 +8,6 @@ import "@mantine/dates/styles.css";
 import App from "./App.tsx";
 
 async function enableMocking() {
-  if (!import.meta.env.DEV) {
-    return;
-  }
-
   const { worker } = await import("./mocks/browser");
 
   await worker.start({
