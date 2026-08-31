@@ -1,4 +1,4 @@
-import { ActionIcon, Switch } from "@mantine/core";
+import { ActionIcon } from "@mantine/core";
 import { useMantineColorScheme } from "@mantine/core";
 import { Sun, Moon } from "lucide-react";
 

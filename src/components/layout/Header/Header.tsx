@@ -1,7 +1,7 @@
 import { Menu, BellDot } from "lucide-react";
 import { useDisclosure } from "@mantine/hooks";
 import { ThemeToggle } from "../../theme/ThemeToggle/ThemeToggle";
-import { Avatar, ActionIcon, Drawer, Group, HoverCard } from "@mantine/core";
+import { ActionIcon, Drawer, Group, HoverCard } from "@mantine/core";
 import "./Header.css";
 import { MainNavigation } from "../../navigation/MainNavigation/MainNavigation";
 import { useCurrentRoute } from "../../../hooks/useCurrentRoutes";

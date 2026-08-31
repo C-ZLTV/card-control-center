@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import type { ReactNode } from "react";
 
 import { useCards } from "../../hooks/api/useCards";
-import { CardStatuses, Networks } from "../../constants/card";
+import { CardStatuses } from "../../constants/card";
 import type { CardFilters } from "../../types/card";
 
 function createTestQueryClient() {

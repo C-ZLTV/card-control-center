@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Slider, Switch, Button, Skeleton } from "@mantine/core";
 import { Controller } from "react-hook-form";
 
-import { type Card, type CardSettings } from "../../../types/card";
+import { type Card, type CardSetting, type CardSettings } from "../../../types/card";
 import visaLogo from "../../../assets/images/visa-logo.webp";
 import mastercardLogo from "../../../assets/images/mastercard-logo.webp";
 import { AllowedSettings, CardStatuses, Networks } from "../../../constants/card";
@@ -103,7 +103,7 @@ function Settings({
   retry,
   form,
 }: {
-  allowedSettings: string[];
+  allowedSettings: readonly CardSetting[];
   settings: CardSettings | undefined;
   isLoading: boolean;
   isError: boolean;
